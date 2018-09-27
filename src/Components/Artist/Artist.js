@@ -1,7 +1,5 @@
 import React from "react";
 import ApiRequestWrapper from "../ApiRequest/ApiRequestWrapper";
-import ApiRequest from "../ApiRequest/ApiRequest";
-import { SpotifyApiContext } from "../../index";
 
 const BASE_URL = "https://api.spotify.com/v1/artists";
 
