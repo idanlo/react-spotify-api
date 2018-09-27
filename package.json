@@ -1,6 +1,6 @@
 {
   "name": "react-spotify-api",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "This is a component library that helps you interact with the Spotify API",
   "author": "idanlo",
   "license": "MIT",
