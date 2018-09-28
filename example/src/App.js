@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-import { Artist, Track, SpotifyApiContext } from "react-spotify-api";
+import { Artist, Track, Playlist, SpotifyApiContext } from "react-spotify-api";
 
 export default class App extends Component {
   render() {
     return (
-      <SpotifyApiContext.Provider value="BQBUCKptzQoqWWba2Xue76cNNwiwbijEPim_j5um_Z8EUj7cXQQ5yhF0KVKJUgnSaKQ12nRTk5_bH07NRCGluwUoUFnZeHWYSVbbY2oVCCvOVsCei-R5FDR0yGLIDXkvbyg2gkIwi5uFt76iT6XSWpLegf9m7dic5O_DO76lTg84ZNRy3XvwZRcfB4Oj2FBAQuTY2qqle1P7yCON_AbVs9kRn0QSdgHUh1pk9BPWAEHqxhgwvyuyAl9udUaF3KTFa7rksgJhVq1NpteBa69vxIauixNWwftI3hU">
+      <SpotifyApiContext.Provider value="BQAemFQ_AWl_AjoFuNcNa9UX-F86W8AI_PtML7B3JRUrX6PrbPfbiX7M6c5yvjgxG4Y_SOV859KPW8l97i7Cv1m-DMtLePvc_3S930VFngqbCvVRo1BzGaNbYENmd0RagW4uz6Dp6CLueJxzZpQP8z6UGQ9hFWUuc1ZvF0mApHCTQIbSyJmEjeDSoXmgdBI-EPDSgiW8J0yvjjk_Aicf7ZaA_HYbrdbHNBfUJeAYBAFgcfVXBOEyhPGHWlz5YXzDvg532CGpj-VPTSyleRMpCd88cIZgBTQ5ttY">
         <h1>Artist Component</h1>
         <Artist id="6eUKZXaKkcviH0Ku9w2n3V">
           {artist => {
@@ -134,9 +134,8 @@ export default class App extends Component {
         <Track.Features
           id={["1J5ZXurCRQdFHWfOiFt12x", "0tGkxA0oybkQ3iR6LLXPjZ"]}
         >
-          {features => {
-            console.log(features);
-            return features
+          {features =>
+            features
               ? features.audio_features.map(feature => (
                   <ul key={feature.id}>
                     {Object.keys(feature)
@@ -148,8 +147,8 @@ export default class App extends Component {
                       ))}
                   </ul>
                 ))
-              : null;
-          }}
+              : null
+          }
         </Track.Features>
         <h2>Track.Analysis Component</h2>
         <p>
@@ -168,6 +167,43 @@ export default class App extends Component {
             ) : null
           }
         </Track.Analysis>
+        <h1>Playlist Component</h1>
+        <Playlist
+          id="060QHhmOlYMEfFdxl4NpAS"
+          options={{ fields: "name,owner,followers" }}
+        >
+          {playlist =>
+            playlist ? (
+              <ul>
+                <li>{playlist.name}</li>
+                <ul>
+                  <li>Owner - {playlist.owner.display_name}</li>
+                  <li>{playlist.followers.total} followers</li>
+                </ul>
+              </ul>
+            ) : null
+          }
+        </Playlist>
+        <h2>Playlist.Tracks Component</h2>
+        <Playlist.Tracks id="060QHhmOlYMEfFdxl4NpAS" options={{ limit: 10 }}>
+          {tracks =>
+            tracks ? (
+              <ul>
+                {tracks.items.map(track => (
+                  <li key={track.track.id}>{track.track.name}</li>
+                ))}
+              </ul>
+            ) : null
+          }
+        </Playlist.Tracks>
+        <h2>Playlist.Images Component</h2>
+        <Playlist.Images id="060QHhmOlYMEfFdxl4NpAS">
+          {images =>
+            images && images.length > 0 ? (
+              <img src={images[images.length - 1].url} alt="Playlist" /> // last image is smallest one
+            ) : null
+          }
+        </Playlist.Images>
       </SpotifyApiContext.Provider>
     );
   }
