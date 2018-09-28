@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
-import { Artist, Track, Playlist, SpotifyApiContext } from "react-spotify-api";
+import {
+  Artist,
+  Track,
+  Playlist,
+  User,
+  SpotifyApiContext
+} from "react-spotify-api";
 
 export default class App extends Component {
   render() {
@@ -204,6 +210,61 @@ export default class App extends Component {
             ) : null
           }
         </Playlist.Images>
+        <h1>User Component</h1>
+        <p>
+          using the User component with no 'id' prop will return data for the
+          user that belongs to the access_token received in the context provider
+        </p>
+        <User>
+          {user =>
+            user ? (
+              <ul>
+                <li>Name - {user.display_name}</li>
+                <li>ID - {user.id}</li>
+              </ul>
+            ) : null
+          }
+        </User>
+        <hr />
+        <User id="spotify">
+          {user =>
+            user ? (
+              <ul>
+                <li>Name - {user.display_name}</li>
+                <li>ID - {user.id}</li>
+              </ul>
+            ) : null
+          }
+        </User>
+        <h2>User.Playlists Component</h2>
+        <p>
+          using the User.Playlists component with no 'id' prop will return data
+          for the user that belongs to the access_token received in the context
+          provider
+        </p>
+        <User.Playlists options={{ limit: 3 }}>
+          {playlists =>
+            playlists ? (
+              <ul>
+                {playlists.items.map(playlist => (
+                  <li key={playlist.id}>{playlist.name}</li>
+                ))}
+              </ul>
+            ) : null
+          }
+        </User.Playlists>
+        <hr />
+        <User.Playlists id="spotify" options={{ limit: 3 }}>
+          {playlists =>
+            playlists ? (
+              <ul>
+                {playlists.items.map(playlist => (
+                  <li key={playlist.id}>{playlist.name}</li>
+                ))}
+              </ul>
+            ) : null
+          }
+        </User.Playlists>
       </SpotifyApiContext.Provider>
     );
   }
