@@ -17,6 +17,9 @@ export default class ApiRequest extends Component {
       })
       .then(res => {
         this.setState({ data: res.data, loading: false });
+      })
+      .catch(err => {
+        console.log("Error: ", err.message);
       });
   }
 
