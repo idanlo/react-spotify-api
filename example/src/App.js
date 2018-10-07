@@ -5,6 +5,7 @@ import {
   Track,
   Album,
   Playlist,
+  Browse,
   User,
   SpotifyApiContext
 } from "react-spotify-api";
@@ -12,7 +13,7 @@ import {
 export default class App extends Component {
   render() {
     return (
-      <SpotifyApiContext.Provider value="BQCq9qErexkEBI7L9Cn1LpjxgqWxlxQ5Bc554RU6MDebZQIJz_CszIbwskDL5e_JhTomy3O5_QAaVdlOiX9fbHNSf7RiVJD9w13LWPyzDBocsOR7FMa5hW4wqnvpjj4Y36KwVBuXqEvshmsBKPA9Tv58fpbLILSbn75t75qlOyT1olCPgaMUH7zgNaXU6lPMBHMNMgS-EsvbYENabIj2per2gAv7wvwIzXAOXYJrRMEVIhgLPuuCS0Jk8kVuvEif0OUV5MEKBCowLK63ITa-xSNxF2bqjaM-LcA">
+      <SpotifyApiContext.Provider value="BQAE34wlrKQugtgLeP_xudGSqzaIcfyMHpoL0LmULwbwwIZvXF_RbP_3qy7UyYIBN-zQexd0BDkm-22XkoXMZZShQjtp2ts_4R0C7vbh48iN9ziqvo8CVyY2RN5_IsodC1TAspLeVQ-J2HLrLB1wHcfhzDx_ktPsvPOntPada3R_0JeZE1JrY7YIv8OZYk6jUusmzXXevLqvhDWTYk2e4c4tjbmraAyRYGjzpNgLtSt71LsPA1goN0AdS3_4QRGVCOd5TljjQ-PfjQw6hS5uU2jU3nwY_fapqjI">
         <h1>Artist Component</h1>
         <Artist id="6eUKZXaKkcviH0Ku9w2n3V">
           {(artist, loading, error) =>
@@ -266,6 +267,77 @@ export default class App extends Component {
             ) : null
           }
         </Playlist.Images>
+        <h1>Browse Component</h1>
+        <p>
+          All components in this category are using the dot notation under
+          Browse (for example Browse.Category) because there is no default for
+          Browse
+        </p>
+        <h2>Browse.Category (no ID given)</h2>
+        <Browse.Category>
+          {categories => {
+            return categories ? (
+              <ul>
+                {categories.categories.items.splice(0, 5).map(category => (
+                  <li key={category.id}>{category.name}</li>
+                ))}
+              </ul>
+            ) : null;
+          }}
+        </Browse.Category>
+        <h2>Browse.Category (ID given)</h2>
+        <Browse.Category id="chill">
+          {category => {
+            return category ? (
+              <ul>
+                {category.icons.length > 0 ? (
+                  <img src={category.icons[0].url} alt="Category" />
+                ) : null}
+                <li>{category.name}</li>
+              </ul>
+            ) : null;
+          }}
+        </Browse.Category>
+        <h2>Browse.Category with playlists prop set to true</h2>
+        <Browse.Category id="chill" playlists>
+          {playlists => {
+            return playlists ? (
+              <ul>
+                {playlists.playlists.items.splice(0, 5).map(playlist => (
+                  <li key={playlist.id}>{playlist.name}</li>
+                ))}
+              </ul>
+            ) : null;
+          }}
+        </Browse.Category>
+        <h2>Browse.Featured Component</h2>
+        <Browse.Featured>
+          {playlists => {
+            return playlists ? (
+              <React.Fragment>
+                <h4>{playlists.message}</h4>
+                <ul>
+                  {playlists.playlists.items.splice(0, 5).map(playlist => (
+                    <li key={playlist.id}>{playlist.name}</li>
+                  ))}
+                </ul>
+              </React.Fragment>
+            ) : null;
+          }}
+        </Browse.Featured>
+        <h2>Browse.New Component</h2>
+        <Browse.New>
+          {albums => {
+            console.log(albums);
+            return albums ? (
+              <ul>
+                {albums.albums.items.splice(0, 5).map(album => (
+                  <li key={album.id}>{album.name}</li>
+                ))}
+              </ul>
+            ) : null;
+          }}
+        </Browse.New>
         <h1>User Component</h1>
         <p>
           using the User component with no 'id' prop will return data for the
