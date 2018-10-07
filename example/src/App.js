@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import {
   Artist,
   Track,
+  Album,
   Playlist,
   User,
   SpotifyApiContext
@@ -11,7 +12,7 @@ import {
 export default class App extends Component {
   render() {
     return (
-      <SpotifyApiContext.Provider value="BQAemFQ_AWl_AjoFuNcNa9UX-F86W8AI_PtML7B3JRUrX6PrbPfbiX7M6c5yvjgxG4Y_SOV859KPW8l97i7Cv1m-DMtLePvc_3S930VFngqbCvVRo1BzGaNbYENmd0RagW4uz6Dp6CLueJxzZpQP8z6UGQ9hFWUuc1ZvF0mApHCTQIbSyJmEjeDSoXmgdBI-EPDSgiW8J0yvjjk_Aicf7ZaA_HYbrdbHNBfUJeAYBAFgcfVXBOEyhPGHWlz5YXzDvg532CGpj-VPTSyleRMpCd88cIZgBTQ5ttY">
+      <SpotifyApiContext.Provider value="BQCq9qErexkEBI7L9Cn1LpjxgqWxlxQ5Bc554RU6MDebZQIJz_CszIbwskDL5e_JhTomy3O5_QAaVdlOiX9fbHNSf7RiVJD9w13LWPyzDBocsOR7FMa5hW4wqnvpjj4Y36KwVBuXqEvshmsBKPA9Tv58fpbLILSbn75t75qlOyT1olCPgaMUH7zgNaXU6lPMBHMNMgS-EsvbYENabIj2per2gAv7wvwIzXAOXYJrRMEVIhgLPuuCS0Jk8kVuvEif0OUV5MEKBCowLK63ITa-xSNxF2bqjaM-LcA">
         <h1>Artist Component</h1>
         <Artist id="6eUKZXaKkcviH0Ku9w2n3V">
           {(artist, loading, error) =>
@@ -177,6 +178,57 @@ export default class App extends Component {
             ) : null
           }
         </Track.Analysis>
+        <h1>Album Component</h1>
+        <Album id="4ueGcY7b6BzBFyssWpEjZb">
+          {album => {
+            return album ? (
+              <ul>
+                <li>{album.name}</li>
+                <ul>
+                  <li>id: {album.id}</li>
+                  <li>Artists</li>
+                  <ul>
+                    <li>
+                      {album.artists.map(artist => artist.name).join(", ")}
+                    </li>
+                  </ul>
+                </ul>
+              </ul>
+            ) : null;
+          }}
+        </Album>
+        <h2>Album component with multiple IDs</h2>
+        <Album id={["4ueGcY7b6BzBFyssWpEjZb", "43otFXrY0bgaq5fB3GrZj6"]}>
+          {album => {
+            return album
+              ? album.albums.map(alb => (
+                  <ul key={alb.id}>
+                    <li>{alb.name}</li>
+                    <ul>
+                      <li>id: {alb.id}</li>
+                      <ul>
+                        <li>
+                          {alb.artists.map(artist => artist.name).join(", ")}
+                        </li>
+                      </ul>
+                    </ul>
+                  </ul>
+                ))
+              : null;
+          }}
+        </Album>
+        <h2>Album.Tracks Component</h2>
+        <Album.Tracks id="4ueGcY7b6BzBFyssWpEjZb">
+          {tracks => {
+            return tracks ? (
+              <ul>
+                {tracks.items.splice(0, 5).map(track => (
+                  <li key={track.id}>{track.name}</li>
+                ))}
+              </ul>
+            ) : null;
+          }}
+        </Album.Tracks>
         <h1>Playlist Component</h1>
         <Playlist
           id="060QHhmOlYMEfFdxl4NpAS"
