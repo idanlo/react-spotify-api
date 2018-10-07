@@ -14,8 +14,8 @@ export default class App extends Component {
       <SpotifyApiContext.Provider value="BQAemFQ_AWl_AjoFuNcNa9UX-F86W8AI_PtML7B3JRUrX6PrbPfbiX7M6c5yvjgxG4Y_SOV859KPW8l97i7Cv1m-DMtLePvc_3S930VFngqbCvVRo1BzGaNbYENmd0RagW4uz6Dp6CLueJxzZpQP8z6UGQ9hFWUuc1ZvF0mApHCTQIbSyJmEjeDSoXmgdBI-EPDSgiW8J0yvjjk_Aicf7ZaA_HYbrdbHNBfUJeAYBAFgcfVXBOEyhPGHWlz5YXzDvg532CGpj-VPTSyleRMpCd88cIZgBTQ5ttY">
         <h1>Artist Component</h1>
         <Artist id="6eUKZXaKkcviH0Ku9w2n3V">
-          {artist => {
-            return artist ? (
+          {(artist, loading, error) =>
+            artist ? (
               <ul>
                 <li>{artist.name}</li>
                 <ul>
@@ -24,8 +24,12 @@ export default class App extends Component {
                   ))}
                 </ul>
               </ul>
-            ) : null;
-          }}
+            ) : loading ? (
+              <h1>Loading...</h1>
+            ) : (
+              <h1>Error</h1>
+            )
+          }
         </Artist>
         <h2>Artist component with multiple IDs</h2>
         <Artist id={["6eUKZXaKkcviH0Ku9w2n3V", "34gCWollNqYlcodydhFabx"]}>

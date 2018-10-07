@@ -7,8 +7,8 @@ const ApiRequestWrapper = props => {
     <SpotifyApiContext.Consumer>
       {token => (
         <ApiRequest token={token} {...props}>
-          {data => {
-            return props.children(data);
+          {(data, loading, error) => {
+            return props.children(data, loading, error);
           }}
         </ApiRequest>
       )}

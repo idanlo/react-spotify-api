@@ -4,7 +4,8 @@ import axios from "axios";
 export default class ApiRequest extends Component {
   state = {
     data: null,
-    loading: true
+    loading: true,
+    error: false
   };
 
   componentDidMount() {
@@ -19,11 +20,15 @@ export default class ApiRequest extends Component {
         this.setState({ data: res.data, loading: false });
       })
       .catch(err => {
-        console.log("Error: ", err.message);
+        this.setState({ error: true });
       });
   }
 
   render() {
-    return this.props.children(this.state.data);
+    return this.props.children(
+      this.state.data,
+      this.state.loading,
+      this.state.error
+    );
   }
 }
