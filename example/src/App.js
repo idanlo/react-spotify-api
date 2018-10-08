@@ -13,7 +13,7 @@ import {
 export default class App extends Component {
   render() {
     return (
-      <SpotifyApiContext.Provider value="BQAE34wlrKQugtgLeP_xudGSqzaIcfyMHpoL0LmULwbwwIZvXF_RbP_3qy7UyYIBN-zQexd0BDkm-22XkoXMZZShQjtp2ts_4R0C7vbh48iN9ziqvo8CVyY2RN5_IsodC1TAspLeVQ-J2HLrLB1wHcfhzDx_ktPsvPOntPada3R_0JeZE1JrY7YIv8OZYk6jUusmzXXevLqvhDWTYk2e4c4tjbmraAyRYGjzpNgLtSt71LsPA1goN0AdS3_4QRGVCOd5TljjQ-PfjQw6hS5uU2jU3nwY_fapqjI">
+      <SpotifyApiContext.Provider value="BQDjm8FjjPaDlcHVD2HzdZ1v6HSBgMEiI1IkycwS52YoQIW52mKswphZVf3GIgGlweodal4VmmYvDYcfYLsfITM3Nyvp-O6i9LRZGkkuh5ZqmUWHKg3FkOxcoKouHA4BhotOa1YbWgSO0nQd8ij2f1btEPywdLhJfEH9DUdpbRf9IWRqV85tDzcA4Af-u4TmDR_w_otDIOzfHsdhYuuYmG4tiunKwn9SE3JMYl8XV8N5qDhkaCoIgVoOVPC-4ajPSZ22-y4rLoTCPnmt2A7lBXrNDr6XFLG5wDU">
         <h1>Artist Component</h1>
         <Artist id="6eUKZXaKkcviH0Ku9w2n3V">
           {(artist, loading, error) =>
@@ -298,7 +298,7 @@ export default class App extends Component {
             ) : null;
           }}
         </Browse.Category>
-        <h2>Browse.Category with playlists prop set to true</h2>
+        <h2>Browse.Category with playlists prop set to true (ID given)</h2>
         <Browse.Category id="chill" playlists>
           {playlists => {
             return playlists ? (
@@ -328,7 +328,6 @@ export default class App extends Component {
         <h2>Browse.New Component</h2>
         <Browse.New>
           {albums => {
-            console.log(albums);
             return albums ? (
               <ul>
                 {albums.albums.items.splice(0, 5).map(album => (
@@ -338,6 +337,36 @@ export default class App extends Component {
             ) : null;
           }}
         </Browse.New>
+        <h2>Browse.Recommendations Component</h2>
+        <Browse.Recommendations
+          options={{
+            seed_artists: "0L8ExT028jH3ddEcZwqJJ5,34gCWollNqYlcodydhFabx"
+          }}
+        >
+          {recommendations => {
+            return recommendations ? (
+              <ul>
+                <li>seeds</li>
+                <ul>
+                  {recommendations.seeds.map(seed => (
+                    <li key={seed.id}>
+                      {seed.type} - {seed.id}
+                    </li>
+                  ))}
+                </ul>
+                <li>Songs</li>
+                <ul>
+                  {recommendations.tracks.splice(0, 5).map(track => (
+                    <li key={track.id}>
+                      {track.artists.map(artist => artist.name).join(", ")} -{" "}
+                      {track.name}
+                    </li>
+                  ))}
+                </ul>
+              </ul>
+            ) : null;
+          }}
+        </Browse.Recommendations>
         <h1>User Component</h1>
         <p>
           using the User component with no 'id' prop will return data for the
@@ -393,6 +422,70 @@ export default class App extends Component {
             ) : null
           }
         </User.Playlists>
+        <h2>User.Tracks Component - get user saved tracks</h2>
+        <p>
+          this component requires that the access token will have the
+          'user-library-read' scope
+        </p>
+        <User.Tracks options={{ limit: 8 }}>
+          {tracks => {
+            return tracks ? (
+              <ul>
+                {tracks.items.map(track => (
+                  <li key={track.track.id}>{track.track.name}</li>
+                ))}
+              </ul>
+            ) : null;
+          }}
+        </User.Tracks>
+        <h2>User.Albums Component - get user saved albums</h2>
+        <p>
+          this component also requires that the access token will have the
+          'user-library-read' scope
+        </p>
+        <User.Albums>
+          {albums => {
+            return albums ? (
+              <ul>
+                {albums.items.map(album => (
+                  <li key={album.album.id}>{album.album.name}</li>
+                ))}
+              </ul>
+            ) : null;
+          }}
+        </User.Albums>
+        <h2>User.Artists Component - get user saved artists</h2>
+        <p>
+          this component requires that the access token will have the
+          'user-follow-read' scope
+        </p>
+        <User.Artists>
+          {artists => {
+            return artists ? (
+              <ul>
+                {artists.artists.items.map(artist => (
+                  <li key={artist.id}>{artist.name}</li>
+                ))}
+              </ul>
+            ) : null;
+          }}
+        </User.Artists>
+        <h2>User.Top Component - get user top artists or tracks</h2>
+        <p>
+          this component requires that the access token will have the
+          'user-top-read' scope
+        </p>
+        <User.Top type="tracks" options={{ limit: 10 }}>
+          {tracks => {
+            return tracks ? (
+              <ul>
+                {tracks.items.map(track => (
+                  <li key={track.id}>{track.name}</li>
+                ))}
+              </ul>
+            ) : null;
+          }}
+        </User.Top>
       </SpotifyApiContext.Provider>
     );
   }

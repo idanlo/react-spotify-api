@@ -28,7 +28,7 @@ describe("<ApiRequest />", () => {
 
     return Promise.resolve().then(() => {
       const state = wrapper.state();
-      expect(children).toHaveBeenCalledWith(state.data);
+      expect(children).toHaveBeenCalledWith(state.data, false, false);
     });
   });
 });
