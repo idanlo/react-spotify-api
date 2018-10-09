@@ -20,12 +20,31 @@ npm install --save react-spotify-api
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-spotify-api'
+import {SpotifyApiContext, Artist} from 'react-spotify-api'
 
 class Example extends Component {
   render () {
     return (
-      <MyComponent />
+      <SpotifyApiContext.Provider value={this.props.token}>
+        <Artist id={this.props.id}>
+          {(artist, loading, error) =>
+            artist ? (
+              <ul>
+                <li>{artist.name}</li>
+                <ul>
+                  {artist.genres.map(genre => (
+                    <li key={genre}>{genre}</li>
+                  ))}
+                </ul>
+              </ul>
+            ) : loading ? (
+              <h1>Loading...</h1>
+            ) : (
+              <h1>There has been an error</h1>
+            )
+          }
+        </Artist>
+      </SpotifyApiContext>
     )
   }
 }
