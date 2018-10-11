@@ -20,7 +20,7 @@ npm install --save react-spotify-api
 ```jsx
 import React, { Component } from 'react'
 
-import {SpotifyApiContext, Artist} from 'react-spotify-api'
+import { SpotifyApiContext, Artist } from 'react-spotify-api'
 
 class Example extends Component {
   render () {
@@ -44,7 +44,7 @@ class Example extends Component {
             )
           }
         </Artist>
-      </SpotifyApiContext>
+      </SpotifyApiContext.Provider>
     )
   }
 }
