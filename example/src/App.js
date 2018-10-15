@@ -7,13 +7,14 @@ import {
   Playlist,
   Browse,
   User,
+  Search,
   SpotifyApiContext
 } from "react-spotify-api";
 
 export default class App extends Component {
   render() {
     return (
-      <SpotifyApiContext.Provider value="BQDjm8FjjPaDlcHVD2HzdZ1v6HSBgMEiI1IkycwS52YoQIW52mKswphZVf3GIgGlweodal4VmmYvDYcfYLsfITM3Nyvp-O6i9LRZGkkuh5ZqmUWHKg3FkOxcoKouHA4BhotOa1YbWgSO0nQd8ij2f1btEPywdLhJfEH9DUdpbRf9IWRqV85tDzcA4Af-u4TmDR_w_otDIOzfHsdhYuuYmG4tiunKwn9SE3JMYl8XV8N5qDhkaCoIgVoOVPC-4ajPSZ22-y4rLoTCPnmt2A7lBXrNDr6XFLG5wDU">
+      <SpotifyApiContext.Provider value="BQDqzsYydhT2m18RPDSfq__MsVwEPCd0ugsORgtdMULlTCE105aywlj9lKaDXtn2bVmgg0vw0ELA7qmDxWAF1L8QiFGpspx-maYibks5-2NTS44x3QmFttdTgNjhZN0aNSglDcLWEozkB1Nij8eXpmK2_YlIid0uyiFlXihvzmN7RhcZidGGXK_FrQncoYIz8wBv9WAYH4yILnvqTF1XGx4bJpL1nVK1-y2co9dFAxXXzbLQ2ni-K-HbUdBURtNBUnQoT2Ro4qOLJEEOxAPfkjkeK3s_vcNauM4">
         <h1>Artist Component</h1>
         <Artist id="6eUKZXaKkcviH0Ku9w2n3V">
           {(artist, loading, error) =>
@@ -486,6 +487,28 @@ export default class App extends Component {
             ) : null;
           }}
         </User.Top>
+        <h2>Search Component</h2>
+        <Search query="ed" album artist options={{ limit: 5 }}>
+          {data => {
+            console.log(data);
+            return data ? (
+              <ul>
+                <li>Albums</li>
+                <ul>
+                  {data.albums.items.map(album => (
+                    <li key={album.id}>{album.name}</li>
+                  ))}
+                </ul>
+                <li>Artists</li>
+                <ul>
+                  {data.artists.items.map(artist => (
+                    <li key={artist.id}>{artist.name}</li>
+                  ))}
+                </ul>
+              </ul>
+            ) : null;
+          }}
+        </Search>
       </SpotifyApiContext.Provider>
     );
   }
