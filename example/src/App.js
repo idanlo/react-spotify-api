@@ -14,7 +14,7 @@ import {
 export default class App extends Component {
   render() {
     return (
-      <SpotifyApiContext.Provider value="BQDqzsYydhT2m18RPDSfq__MsVwEPCd0ugsORgtdMULlTCE105aywlj9lKaDXtn2bVmgg0vw0ELA7qmDxWAF1L8QiFGpspx-maYibks5-2NTS44x3QmFttdTgNjhZN0aNSglDcLWEozkB1Nij8eXpmK2_YlIid0uyiFlXihvzmN7RhcZidGGXK_FrQncoYIz8wBv9WAYH4yILnvqTF1XGx4bJpL1nVK1-y2co9dFAxXXzbLQ2ni-K-HbUdBURtNBUnQoT2Ro4qOLJEEOxAPfkjkeK3s_vcNauM4">
+      <SpotifyApiContext.Provider value="BQAr0kcomH8KvMUwF3N6aL0aFp-WtwMvUfNG9MuAN2UPMw_ctqYZFcgjNhRR3xFIgKlGAeQA0pbkwTix3qNJZZLorZr0xxz7uWfEpWcPnT0NiP2GXFlY01u5SP0MXLBckHvBESVqDvXJCZWl1G0voysgLPAPw8g34sSgy85-n1azTNNxaZNT76EDaqkfOIDh_LUuvDwd1BtouMaAS_ckR9cpjThlz5dBeYu-OarlYVoZ99KmhJYjcOL-mkv1iuF2z-ZWOrlFwT2Cr11FPQhcwge56SX42Jo2dl0">
         <h1>Artist Component</h1>
         <Artist id="6eUKZXaKkcviH0Ku9w2n3V">
           {(artist, loading, error) =>

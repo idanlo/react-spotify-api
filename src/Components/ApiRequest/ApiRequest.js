@@ -9,6 +9,21 @@ export default class ApiRequest extends Component {
   };
 
   componentDidMount() {
+    this.fetchData();
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log("REACT-SPOTIFY-API UPDATE");
+    if (
+      prevProps.url !== this.props.url ||
+      prevProps.options.type !== this.props.options.type ||
+      prevProps.options.q !== this.props.options.q
+    ) {
+      this.fetchData();
+    }
+  }
+
+  fetchData = () => {
     axios
       .get(this.props.url, {
         params: this.props.options,
@@ -22,7 +37,7 @@ export default class ApiRequest extends Component {
       .catch(err => {
         this.setState({ error: true });
       });
-  }
+  };
 
   render() {
     return this.props.children(

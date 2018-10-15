@@ -17,7 +17,9 @@ const Search = props => {
 
   return (
     <ApiRequestWrapper url={url} options={options}>
-      {data => props.children(data)}
+      {data => {
+        return props.children(data);
+      }}
     </ApiRequestWrapper>
   );
 };
