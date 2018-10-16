@@ -20,7 +20,11 @@ export default class ApiRequest extends Component {
         prevProps.options.type &&
         this.props.options.type &&
         prevProps.options.type !== this.props.options.type) ||
-      prevProps.options.q !== this.props.options.q // props.options.q is required as proptype so will always be defined
+      (prevProps.options &&
+        this.props.options &&
+        prevProps.options.q &&
+        this.props.options.q &&
+        prevProps.options.q !== this.props.options.q)
     ) {
       this.fetchData();
     }
