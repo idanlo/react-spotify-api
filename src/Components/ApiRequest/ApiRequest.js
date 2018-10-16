@@ -13,17 +13,21 @@ export default class ApiRequest extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("REACT-SPOTIFY-API UPDATE");
     if (
       prevProps.url !== this.props.url ||
-      prevProps.options.type !== this.props.options.type ||
-      prevProps.options.q !== this.props.options.q
+      (prevProps.options &&
+        this.props.options &&
+        prevProps.options.type &&
+        this.props.options.type &&
+        prevProps.options.type !== this.props.options.type) ||
+      prevProps.options.q !== this.props.options.q // props.options.q is required as proptype so will always be defined
     ) {
       this.fetchData();
     }
   }
 
   fetchData = () => {
+    console.log("REACT-SPOTIFY-API UPDATE - FETCHING DATA");
     axios
       .get(this.props.url, {
         params: this.props.options,
