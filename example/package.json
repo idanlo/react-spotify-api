@@ -1,7 +1,7 @@
 {
   "name": "react-spotify-api-example",
   "homepage": "https://idanlo.github.io/react-spotify-api",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "license": "MIT",
   "private": true,
   "dependencies": {
