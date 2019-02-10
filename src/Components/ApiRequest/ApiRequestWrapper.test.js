@@ -7,15 +7,23 @@ configure({ adapter: new Adapter() });
 
 describe('<ApiRequestWrapper />', () => {
   it('should render', () => {
+    const children = jest.fn();
     const wrapper = shallow(
-      <ApiRequestWrapper url="https://test.com/ApiRequest" />
+      <ApiRequestWrapper
+        url="https://test.com/ApiRequest"
+        children={children}
+      />
     );
     expect(wrapper).toBeTruthy();
   });
 
   it('should have the context consumer that provides data to ApiRequest component', () => {
+    const children = jest.fn();
     const wrapper = shallow(
-      <ApiRequestWrapper url="https://test.com/ApiRequest" />
+      <ApiRequestWrapper
+        url="https://test.com/ApiRequest"
+        children={children}
+      />
     );
     expect(wrapper.find('ContextConsumer')).toBeTruthy();
   });

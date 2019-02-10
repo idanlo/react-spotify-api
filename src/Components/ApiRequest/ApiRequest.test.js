@@ -9,7 +9,11 @@ describe('<ApiRequest />', () => {
   it('should have data given from the axios mock inside state.data', () => {
     const children = jest.fn();
     const wrapper = shallow(
-      <ApiRequest url="https://test.com/ApiRequest" children={children} />
+      <ApiRequest
+        url="https://test.com/ApiRequest"
+        children={children}
+        token="tes"
+      />
     );
 
     return Promise.resolve().then(() => {
@@ -22,7 +26,11 @@ describe('<ApiRequest />', () => {
     const children = jest.fn();
 
     const wrapper = shallow(
-      <ApiRequest url="https://test.com/ApiRequest" children={children} />
+      <ApiRequest
+        url="https://test.com/ApiRequest"
+        children={children}
+        token="tes"
+      />
     );
 
     return Promise.resolve().then(() => {
