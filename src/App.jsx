@@ -20,7 +20,7 @@ function Test() {
 export default class App extends Component {
     render() {
         return (
-            <SpotifyApiContext.Provider value="BQCowZ3Ybp4iAf0voDRDs2peNhnAvXCcOx6KL9whXYj2HJYiS8ev9-R_NRdq33CwShdoQZv2pzg68N_dkH6OD6iRf2HaBCZul2YML4QcXkmgE4iG38zfAwC15LpbZv_1c5qK0-WtGmW1T0CdKnuAHQ9ZiAh8K9mAL5ugdcHGvsQ4JMfYK48ykMji_ElCoAAaCGK37UkUFHAtRJskXVNXCVmkh-m1myS8WB_lsWO6KTcbIWiSwIFb1G3Oswwz6qobdjjK-Eq1Cw5qHvR0WgBuEXJjt2RmMtq2efFpMcI">
+            <SpotifyApiContext.Provider value="BQAgZ8GMHDiet0exYx3HIGgCP21T19ODbh-wodh6fevhJvcqaJAhFvGPPtH7XiEIFTGJ4g0PlYzSmxK7idH3X-plq4noNhegxMs7YFjD-bjuKEhjeS1NMJo7ql3i0RDnLoXvQN2xRH1J1l3pHojtP3mh1fEAHr1LG4-ie-kZTW9im-_5pR1mt6qdBVB5vL6VeG0-wSjtvh3B8tawVGWUjnF1XhBCxz-Hj13cZoTpX77eYLYs2T7Qd_x0bwR7fsyRStr7GaMRmyPcaKnjlPprMONpz9cJSjN8HsuHs5Q">
                 <h1>Artist Component</h1>
                 <Test />
                 <Artist id="6eUKZXaKkcviH0Ku9w2n3V">
