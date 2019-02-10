@@ -11,10 +11,10 @@ describe('<Album />', () => {
         expect(wrapper).toBeTruthy();
     });
 
-    it('should return a function inside <ApiRequestWrapper />', () => {
+    it('should return a function inside <ApiRequest />', () => {
         const wrapper = shallow(<Album id="123" />);
-        expect(
-            typeof wrapper.find('ApiRequestWrapper').props().children
-        ).toEqual('function');
+        expect(typeof wrapper.find('ApiRequest').props().children).toEqual(
+            'function'
+        );
     });
 });

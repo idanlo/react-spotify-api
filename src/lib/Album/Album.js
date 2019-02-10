@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ApiRequestWrapper from '../ApiRequest/ApiRequestWrapper';
+import ApiRequest from '../ApiRequest/ApiRequest';
 
 const BASE_URL = 'https://api.spotify.com/v1/albums';
 
@@ -14,9 +14,9 @@ const Album = props => {
     }
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -25,9 +25,9 @@ Album.Tracks = props => {
     let options = { ...props.options };
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 

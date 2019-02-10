@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ApiRequestWrapper from '../ApiRequest/ApiRequestWrapper';
+import ApiRequest from '../ApiRequest/ApiRequest';
 
 const BASE_URL = 'https://api.spotify.com/v1';
 
@@ -14,9 +14,9 @@ const User = props => {
     }
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -30,9 +30,9 @@ User.Playlists = props => {
     }
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -41,9 +41,9 @@ User.Tracks = props => {
     let options = { ...props.options };
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -52,9 +52,9 @@ User.Albums = props => {
     let options = { ...props.options };
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -63,9 +63,9 @@ User.Artists = props => {
     let options = { ...props.options, type: 'artist' };
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -74,9 +74,9 @@ User.Top = props => {
     let options = { ...props.options };
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 

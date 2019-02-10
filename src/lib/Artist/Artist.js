@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ApiRequestWrapper from '../ApiRequest/ApiRequestWrapper';
+import ApiRequest from '../ApiRequest/ApiRequest';
 
 const BASE_URL = 'https://api.spotify.com/v1/artists';
 
@@ -13,9 +13,9 @@ const Artist = props => {
         url += `/${props.id}`;
     }
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -23,9 +23,9 @@ Artist.Albums = props => {
     let url = BASE_URL + `/${props.id}/albums`;
     let options = { ...props.options };
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -33,9 +33,9 @@ Artist.Tracks = props => {
     let url = BASE_URL + `/${props.id}/top-tracks`;
     let options = { ...props.options };
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -44,9 +44,9 @@ Artist.Related = props => {
     let options = { ...props.options };
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 

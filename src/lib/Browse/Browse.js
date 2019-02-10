@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ApiRequestWrapper from '../ApiRequest/ApiRequestWrapper';
+import ApiRequest from '../ApiRequest/ApiRequest';
 
 const BASE_URL = 'https://api.spotify.com/v1/browse';
 
@@ -18,9 +18,9 @@ Browse.Category = props => {
     }
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -29,9 +29,9 @@ Browse.Featured = props => {
     let options = { ...props.options };
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -40,9 +40,9 @@ Browse.New = props => {
     let options = { ...props.options };
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -51,9 +51,9 @@ Browse.Recommendations = props => {
     let options = { ...props.options };
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ApiRequestWrapper from '../ApiRequest/ApiRequestWrapper';
+import ApiRequest from '../ApiRequest/ApiRequest';
 
 const BASE_URL = 'https://api.spotify.com/v1/playlists';
 
@@ -9,9 +9,9 @@ const Playlist = props => {
     let options = { ...props.options };
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -20,9 +20,9 @@ Playlist.Tracks = props => {
     let options = { ...props.options };
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => props.children(data)}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
@@ -30,11 +30,7 @@ Playlist.Images = props => {
     let url = BASE_URL + `/${props.id}/images`;
     // no options for this endpoint
 
-    return (
-        <ApiRequestWrapper url={url}>
-            {data => props.children(data)}
-        </ApiRequestWrapper>
-    );
+    return <ApiRequest url={url}>{data => props.children(data)}</ApiRequest>;
 };
 
 const basicPropTypes = {

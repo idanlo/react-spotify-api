@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ApiRequestWrapper from '../ApiRequest/ApiRequestWrapper';
+import ApiRequest from '../ApiRequest/ApiRequest';
 
 const BASE_URL = 'https://api.spotify.com/v1/search';
 
@@ -16,11 +16,11 @@ const Search = props => {
     options.q = props.query;
 
     return (
-        <ApiRequestWrapper url={url} options={options}>
+        <ApiRequest url={url} options={options}>
             {data => {
                 return props.children(data);
             }}
-        </ApiRequestWrapper>
+        </ApiRequest>
     );
 };
 
