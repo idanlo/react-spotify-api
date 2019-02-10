@@ -1,4 +1,4 @@
-# react-spotify-api
+﻿# react-spotify-api
 
 > This is a component library that helps you interact with the Spotify API
 
