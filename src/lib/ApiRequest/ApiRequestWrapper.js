@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SpotifyApiContext } from '../../';
+import { SpotifyApiContext } from '../';
 import ApiRequest from './ApiRequest';
 
 const ApiRequestWrapper = props => {

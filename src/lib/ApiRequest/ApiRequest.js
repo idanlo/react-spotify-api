@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SpotifyApiContext } from '../../';
+import { SpotifyApiContext } from '../';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 

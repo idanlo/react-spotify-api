@@ -9,7 +9,7 @@ import {
     User,
     Search,
     SpotifyApiContext
-} from 'react-spotify-api';
+} from './lib';
 
 function Test() {
     const [foo, setFoo] = React.useState('abcdefg');

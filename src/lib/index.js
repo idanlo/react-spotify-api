@@ -1,11 +1,11 @@
 import React from 'react';
-import Artist from './Components/Artist/Artist';
-import Track from './Components/Track/Track';
-import Album from './Components/Album/Album';
-import Browse from './Components/Browse/Browse';
-import Playlist from './Components/Playlist/Playlist';
-import User from './Components/User/User';
-import Search from './Components/Search/Search';
+import Artist from './Artist/Artist';
+import Track from './Track/Track';
+import Album from './Album/Album';
+import Browse from './Browse/Browse';
+import Playlist from './Playlist/Playlist';
+import User from './User/User';
+import Search from './Search/Search';
 
 const SpotifyApiContext = React.createContext();
 
