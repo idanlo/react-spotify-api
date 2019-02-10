@@ -1,7 +1,8 @@
-import React from "react";
-import ApiRequestWrapper from "../ApiRequest/ApiRequestWrapper";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ApiRequestWrapper from '../ApiRequest/ApiRequestWrapper';
 
-const BASE_URL = "https://api.spotify.com/v1/playlists";
+const BASE_URL = 'https://api.spotify.com/v1/playlists';
 
 const Playlist = props => {
   let url = BASE_URL + `/${props.id}`;
@@ -34,6 +35,27 @@ Playlist.Images = props => {
       {data => props.children(data)}
     </ApiRequestWrapper>
   );
+};
+
+const basicPropTypes = {
+  children: PropTypes.func.isRequired
+};
+
+Playlist.propTypes = {
+  ...basicPropTypes,
+  id: PropTypes.string.isRequired,
+  options: PropTypes.object
+};
+
+Playlist.Tracks.propTypes = {
+  ...basicPropTypes,
+  id: PropTypes.string.isRequired,
+  options: PropTypes.object
+};
+
+Playlist.Images.propTypes = {
+  ...basicPropTypes,
+  id: PropTypes.string.isRequired
 };
 
 export default Playlist;

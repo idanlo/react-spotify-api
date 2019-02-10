@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ApiRequestWrapper from "../ApiRequest/ApiRequestWrapper";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ApiRequestWrapper from '../ApiRequest/ApiRequestWrapper';
 
-const BASE_URL = "https://api.spotify.com/v1";
+const BASE_URL = 'https://api.spotify.com/v1';
 
 const User = props => {
   let url = BASE_URL;
@@ -60,7 +60,7 @@ User.Albums = props => {
 
 User.Artists = props => {
   let url = BASE_URL + `/me/following/`;
-  let options = { ...props.options, type: "artist" };
+  let options = { ...props.options, type: 'artist' };
 
   return (
     <ApiRequestWrapper url={url} options={options}>
@@ -80,29 +80,39 @@ User.Top = props => {
   );
 };
 
+const basicPropTypes = {
+  children: PropTypes.func.isRequired
+};
+
 User.propTypes = {
+  ...basicPropTypes,
   id: PropTypes.string,
   options: PropTypes.object
 };
 
 User.Playlists.propTypes = {
+  ...basicPropTypes,
   id: PropTypes.string,
   options: PropTypes.object
 };
 
 User.Tracks.propTypes = {
+  ...basicPropTypes,
   options: PropTypes.object
 };
 
 User.Albums.propTypes = {
+  ...basicPropTypes,
   options: PropTypes.object
 };
 
 User.Artists.propTypes = {
+  ...basicPropTypes,
   options: PropTypes.object
 };
 
 User.Top.propTypes = {
+  ...basicPropTypes,
   options: PropTypes.object,
   type: PropTypes.string.isRequired
 };

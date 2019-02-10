@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ApiRequestWrapper from "../ApiRequest/ApiRequestWrapper";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ApiRequestWrapper from '../ApiRequest/ApiRequestWrapper';
 
-const BASE_URL = "https://api.spotify.com/v1/albums";
+const BASE_URL = 'https://api.spotify.com/v1/albums';
 
 const Album = props => {
   let url = BASE_URL;
   let options = { ...props.options };
   if (Array.isArray(props.id)) {
-    options.ids = props.id.join(",");
+    options.ids = props.id.join(',');
   } else {
     url += `/${props.id}`;
   }

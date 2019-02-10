@@ -1,7 +1,14 @@
-import React, { Component } from "react";
-import axios from "axios";
+import { Component } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 
 export default class ApiRequest extends Component {
+  static propTypes = {
+    options: PropTypes.object,
+    url: PropTypes.string.isRequired,
+    token: PropTypes.string.isRequired,
+    children: PropTypes.func.isRequired
+  };
   state = {
     data: null,
     loading: true,
@@ -31,7 +38,7 @@ export default class ApiRequest extends Component {
   }
 
   fetchData = () => {
-    console.log("REACT-SPOTIFY-API UPDATE - FETCHING DATA");
+    console.log('REACT-SPOTIFY-API UPDATE - FETCHING DATA');
     axios
       .get(this.props.url, {
         params: this.props.options,
@@ -43,6 +50,7 @@ export default class ApiRequest extends Component {
         this.setState({ data: res.data, loading: false });
       })
       .catch(err => {
+        console.log(err);
         this.setState({ error: true });
       });
   };

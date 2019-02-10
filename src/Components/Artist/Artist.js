@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ApiRequestWrapper from "../ApiRequest/ApiRequestWrapper";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ApiRequestWrapper from '../ApiRequest/ApiRequestWrapper';
 
-const BASE_URL = "https://api.spotify.com/v1/artists";
+const BASE_URL = 'https://api.spotify.com/v1/artists';
 
 const Artist = props => {
   let url = BASE_URL;
   let options = { ...props.options };
   if (Array.isArray(props.id)) {
-    options.ids = props.id.join(",");
+    options.ids = props.id.join(',');
   } else {
     url += `/${props.id}`;
   }
@@ -91,7 +91,7 @@ Artist.Albums.defaultProps = {
 
 Artist.Tracks.defaultProps = {
   options: {
-    market: "from_token"
+    market: 'from_token'
   }
 };
 

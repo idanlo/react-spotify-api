@@ -1,6 +1,7 @@
-import React from "react";
-import { SpotifyApiContext } from "../../index";
-import ApiRequest from "./ApiRequest";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { SpotifyApiContext } from '../../index';
+import ApiRequest from './ApiRequest';
 
 const ApiRequestWrapper = props => {
   return (
@@ -14,6 +15,10 @@ const ApiRequestWrapper = props => {
       )}
     </SpotifyApiContext.Consumer>
   );
+};
+
+ApiRequestWrapper.propTypes = {
+  children: PropTypes.func.isRequired
 };
 
 export default ApiRequestWrapper;
