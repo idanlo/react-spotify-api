@@ -37,7 +37,7 @@ Track.Features = props => {
 };
 
 Track.Analysis = props => {
-    let url = BASE_URL + '/audio-analysis' + `/${props.id}`;
+    let url = BASE_URL + `/audio-analysis/${props.id}`;
     let options = {};
 
     return (
