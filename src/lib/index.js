@@ -11,6 +11,7 @@ import Search from './Search/Search';
 
 // Hooks
 import useArtist from './Artist/useArtist';
+import useTrack from './Track/useTrack';
 
 const SpotifyApiContext = React.createContext();
 
@@ -27,4 +28,4 @@ export {
 };
 
 // Hooks
-export { useArtist };
+export { useArtist, useTrack };
