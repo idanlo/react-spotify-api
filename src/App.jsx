@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 import {
     Artist,
+    useArtist,
     Track,
+    useTrack,
     Album,
     Playlist,
     Browse,
@@ -11,18 +13,74 @@ import {
     SpotifyApiContext
 } from './lib';
 
-function Test() {
-    const [foo, setFoo] = React.useState('abcdefg');
+export function TestUseArtist() {
+    const [id, setId] = React.useState([
+        '1XpDYCrUJnvCo9Ez6yeMWh',
+        '5eAWCfyUhZtHHtBdNk56l1'
+    ]);
+    const { data, loading, error } = useArtist(id);
 
-    return foo;
+    React.useEffect(() => {
+        console.log(data);
+    });
+    React.useEffect(() => {
+        setTimeout(() => {
+            setId(['5eAWCfyUhZtHHtBdNk56l1', '1XpDYCrUJnvCo9Ez6yeMWh']);
+        }, 1000);
+    }, []);
+    if (loading) {
+        return <h1>Loading...</h1>;
+    } else if (error) {
+        return <h1>Error</h1>;
+    } else if (data) {
+        return data.artists.map(artist => (
+            <div key={artist.id}>
+                <h1>{artist.name}</h1>
+                {artist.images && artist.images.length ? (
+                    <img src={artist.images[0].url} alt={artist.name} />
+                ) : null}
+            </div>
+        ));
+    } else {
+        return null;
+    }
+}
+
+export function TestUseTrack() {
+    const [id, setId] = React.useState([
+        '5qyJ5rKvb8TbNDNbuctVSg',
+        '6DPCSLA7hJlae1rsravTuY'
+    ]);
+    const { data, loading, error } = useTrack(id);
+
+    React.useEffect(() => {
+        console.log(data);
+    });
+    React.useEffect(() => {
+        setTimeout(() => {
+            setId(['6DPCSLA7hJlae1rsravTuY', '5qyJ5rKvb8TbNDNbuctVSg']);
+        }, 1000);
+    }, []);
+    if (loading) {
+        return <h1>Loading...</h1>;
+    } else if (error) {
+        return <h1>Error</h1>;
+    } else if (data) {
+        return data.tracks.map(track => (
+            <div key={track.id}>
+                <h1>{track.name}</h1>
+            </div>
+        ));
+    } else {
+        return null;
+    }
 }
 
 export default class App extends Component {
     render() {
         return (
-            <SpotifyApiContext.Provider value="BQAgZ8GMHDiet0exYx3HIGgCP21T19ODbh-wodh6fevhJvcqaJAhFvGPPtH7XiEIFTGJ4g0PlYzSmxK7idH3X-plq4noNhegxMs7YFjD-bjuKEhjeS1NMJo7ql3i0RDnLoXvQN2xRH1J1l3pHojtP3mh1fEAHr1LG4-ie-kZTW9im-_5pR1mt6qdBVB5vL6VeG0-wSjtvh3B8tawVGWUjnF1XhBCxz-Hj13cZoTpX77eYLYs2T7Qd_x0bwR7fsyRStr7GaMRmyPcaKnjlPprMONpz9cJSjN8HsuHs5Q">
+            <SpotifyApiContext.Provider value="BQAfFTUjhFdecmr73LqGz7DejaPLDQ-TbDDWfZ-tAq8_0J51nxXx3km7Xa9sWjw3I54HLvi-aFsGliLl0iy4OjfKhMSAP-X1QNROlZg-fNGocg9fm4DOqxrIPZTKtawfdaXHOtbA3RseDvdmVcc0Py752uXxbJ0Q1wCxsU2PuRdWtnwLLEiDujMZfAgFNwpERd1U1MOW2Nh0Gkn7IXjripNYZ_w_H_j4K4d6FBpxPOCX0RPqBmn-F668_taA9C2jZHTFuta8W2iWajrI3RrYxcqvUVFIam172DLqUQ0">
                 <h1>Artist Component</h1>
-                <Test />
                 <Artist id="6eUKZXaKkcviH0Ku9w2n3V">
                     {(artist, loading, error) =>
                         artist ? (
@@ -550,9 +608,8 @@ export default class App extends Component {
                 </User.Top>
                 <h2>Search Component</h2>
                 <Search query="ed" album artist options={{ limit: 5 }}>
-                    {data => {
-                        console.log(data);
-                        return data ? (
+                    {data =>
+                        data ? (
                             <ul>
                                 <li>Albums</li>
                                 <ul>
@@ -567,8 +624,8 @@ export default class App extends Component {
                                     ))}
                                 </ul>
                             </ul>
-                        ) : null;
-                    }}
+                        ) : null
+                    }
                 </Search>
             </SpotifyApiContext.Provider>
         );
