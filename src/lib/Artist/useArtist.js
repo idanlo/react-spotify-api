@@ -1,16 +1,13 @@
-import React from 'react';
-import ApiRequest from '../ApiRequest/ApiRequest';
+import useApiRequest from '../ApiRequest/useApiRequest';
 
 const BASE_URL = 'https://api.spotify.com/v1/artists';
 
-function useArtist(id, optionsObj) {
-    const [url, setUrl] = React.useState(BASE_URL);
-    const [options, setOptions] = React.useState({ ...options });
+function useArtist(id) {
+    const url = Array.isArray(id) ? BASE_URL : BASE_URL + `/${id}`;
+    const options = Array.isArray(id) ? { ids: id.join(',') } : {};
+    const { data, loading, error } = useApiRequest(url, options);
 
-    if (Array.isArray(id)) {
-        setOptions({ ...options, ids: id.join(',') });
-    } else {
-        setUrl(BASE_URL + `/${id}`);
-    }
-    // useEffect here
+    return { data, loading, error };
 }
+
+export default useArtist;

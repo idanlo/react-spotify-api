@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Components
 import Artist from './Artist/Artist';
 import Track from './Track/Track';
 import Album from './Album/Album';
@@ -7,9 +9,12 @@ import Playlist from './Playlist/Playlist';
 import User from './User/User';
 import Search from './Search/Search';
 
+// Hooks
+import useArtist from './Artist/useArtist';
+
 const SpotifyApiContext = React.createContext();
 
-// export { default as Artist } from "./Components/Artist/Artist";
+// Components
 export {
     SpotifyApiContext,
     Artist,
@@ -20,3 +25,6 @@ export {
     User,
     Search
 };
+
+// Hooks
+export { useArtist };
