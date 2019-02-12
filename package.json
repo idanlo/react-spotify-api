@@ -19,9 +19,12 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@storybook/addon-actions": "^4.1.11",
+    "@storybook/addon-info": "^4.1.11",
+    "@storybook/addon-knobs": "^4.1.11",
     "@storybook/addon-links": "^4.1.11",
     "@storybook/addons": "^4.1.11",
     "@storybook/react": "^4.1.11",
+    "@storybook/storybook-deployer": "^2.8.1",
     "babel-loader": "^8.0.5",
     "cross-env": "^5.2.0",
     "enzyme": "^3.8.0",
@@ -41,7 +44,8 @@
     "eject": "react-scripts eject",
     "dist": "babel src/lib --out-dir dist --copy-files --ignore __snapshots__,test.js --watch",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook-build": "build-storybook -s public",
+    "storybook-deploy": "storybook-to-ghpages"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,5 +58,10 @@
   ],
   "dependencies": {
     "axios": "^0.18.0"
+  },
+  "storybook-deployer": {
+    "gitUsername": "idanlo",
+    "gitEmail": "idan2110@gmail.com",
+    "commitMessage": "Deploy Storybook to GitHub Pages"
   }
 }

@@ -50,19 +50,10 @@ Artist.Related = props => {
     );
 };
 
-// these prop types are for all Artist components (also sub components like Artist.Related)
-const basicPropTypes = {
-    options: PropTypes.object,
-    id: PropTypes.string.isRequired
-};
-
-// these are default props for all Artist components (also sub components like Artist.Related)
-const basicDefaultProps = {
-    options: {}
-};
-
 Artist.propTypes = {
-    ...basicPropTypes,
+    /** Options object (more info above) */
+    options: PropTypes.object,
+    /** Id of the artist */
     id: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string)
@@ -70,23 +61,32 @@ Artist.propTypes = {
 };
 
 Artist.Albums.propTypes = {
-    ...basicPropTypes
+    /** Options object (more info above) */
+    options: PropTypes.object,
+    /** Id of the artist */
+    id: PropTypes.string.isRequired
 };
 
 Artist.Tracks.propTypes = {
-    ...basicPropTypes
+    /** Options object (more info above) */
+    options: PropTypes.object,
+    /** Id of the artist */
+    id: PropTypes.string.isRequired
 };
 
 Artist.Related.propTypes = {
-    ...basicPropTypes
+    /** Options object (more info above) */
+    options: PropTypes.object,
+    /** Id of the artist */
+    id: PropTypes.string.isRequired
 };
 
 Artist.defaultProps = {
-    ...basicDefaultProps
+    options: {}
 };
 
 Artist.Albums.defaultProps = {
-    ...basicDefaultProps
+    options: {}
 };
 
 Artist.Tracks.defaultProps = {
@@ -96,7 +96,11 @@ Artist.Tracks.defaultProps = {
 };
 
 Artist.Related.defaultProps = {
-    ...basicDefaultProps
+    options: {}
 };
+
+Artist.Albums.displayName = 'Artist.Albums';
+Artist.Tracks.displayName = 'Artist.Tracks';
+Artist.Related.displayName = 'Artist.Related';
 
 export default Artist;
