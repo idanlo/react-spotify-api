@@ -10,7 +10,7 @@ const Playlist = props => {
 
     return (
         <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 };
@@ -21,7 +21,7 @@ Playlist.Tracks = props => {
 
     return (
         <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 };
@@ -30,7 +30,11 @@ Playlist.Images = props => {
     let url = BASE_URL + `/${props.id}/images`;
     // no options for this endpoint
 
-    return <ApiRequest url={url}>{data => props.children(data)}</ApiRequest>;
+    return (
+        <ApiRequest url={url}>
+            {(data, loading, error) => props.children(data, loading, error)}
+        </ApiRequest>
+    );
 };
 
 const basicPropTypes = {

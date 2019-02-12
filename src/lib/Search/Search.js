@@ -17,8 +17,8 @@ const Search = props => {
 
     return (
         <ApiRequest url={url} options={options}>
-            {data => {
-                return props.children(data);
+            {(data, loading, error) => {
+                return props.children(data, loading, error);
             }}
         </ApiRequest>
     );

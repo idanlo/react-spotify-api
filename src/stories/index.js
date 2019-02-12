@@ -8,13 +8,13 @@ import { withInfo } from '@storybook/addon-info';
 import Welcome from './Welcome';
 import { SpotifyApiContext, Artist } from '../lib';
 
-SpotifyApiContext.Provider.displayName = 'SpotifyApiContext.Provider';
+// SpotifyApiContext.Provider.displayName = 'SpotifyApiContext.Provider';
 
-addDecorator(story => (
-    <SpotifyApiContext.Provider token={text('Spotify access token', '')}>
-        {story()}
-    </SpotifyApiContext.Provider>
-));
+// addDecorator(story => (
+//     <SpotifyApiContext.Provider token={text('Spotify access token', '')}>
+//         {story()}
+//     </SpotifyApiContext.Provider>
+// ));
 addDecorator(withKnobs);
 addDecorator(withInfo);
 
@@ -35,7 +35,6 @@ storiesOf('Spotify', module)
             `
         }
     })
-    // .addDecorator()
     .add('Artist', () => (
         <Artist id={text('Artist id', '123')}>
             {(data, loading, error) =>
