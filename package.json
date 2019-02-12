@@ -44,8 +44,8 @@
     "eject": "react-scripts eject",
     "dist": "babel src/lib --out-dir dist --copy-files --ignore __snapshots__,test.js --watch",
     "storybook": "start-storybook -p 9009 -s public",
-    "storybook-build": "build-storybook -s public",
-    "storybook-deploy": "storybook-to-ghpages"
+    "build-storybook": "build-storybook -s public",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "eslintConfig": {
     "extends": "react-app"
