@@ -57,28 +57,36 @@ Artist.propTypes = {
     id: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string)
-    ]).isRequired
+    ]).isRequired,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired
 };
 
 Artist.Albums.propTypes = {
     /** Options object (more info above) */
     options: PropTypes.object,
     /** Id of the artist */
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired
 };
 
 Artist.Tracks.propTypes = {
     /** Options object (more info above) */
     options: PropTypes.object,
     /** Id of the artist */
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired
 };
 
 Artist.Related.propTypes = {
     /** Options object (more info above) */
     options: PropTypes.object,
     /** Id of the artist */
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired
 };
 
 Artist.defaultProps = {

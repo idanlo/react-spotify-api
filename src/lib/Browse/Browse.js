@@ -57,29 +57,29 @@ Browse.Recommendations = props => {
     );
 };
 
-const basicPropTypes = {
-    children: PropTypes.func.isRequired
-};
-
 Browse.Category.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
     id: PropTypes.string,
     options: PropTypes.object,
     playlists: PropTypes.bool
 };
 
 Browse.Featured.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
     options: PropTypes.object
 };
 
 Browse.New.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
     options: PropTypes.object
 };
 
 Browse.Recommendations.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
     options: PropTypes.object.isRequired
 };
 

@@ -80,41 +80,73 @@ User.Top = props => {
     );
 };
 
-const basicPropTypes = {
-    children: PropTypes.func.isRequired
-};
-
 User.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
+    /** The id of the user */
     id: PropTypes.string,
+    /** Options object (more info above) */
     options: PropTypes.object
 };
 
 User.Playlists.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
+    /** The id of the user */
     id: PropTypes.string,
+    /** Options object (more info above) */
     options: PropTypes.object
 };
 
 User.Tracks.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
+    /** Options object (more info above) */
     options: PropTypes.object
 };
 
 User.Albums.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
+    /** Options object (more info above) */
     options: PropTypes.object
 };
 
 User.Artists.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
+    /** Options object (more info above) */
     options: PropTypes.object
 };
 
 User.Top.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
+    /** Options object (more info above) */
     options: PropTypes.object,
-    type: PropTypes.string.isRequired
+    /** Type of data to receive - artists/tracks */
+    type: PropTypes.oneOf(['artists', 'tracks']).isRequired
 };
 
+User.defaultProps = {
+    options: {}
+};
+
+User.Playlists.defaultProps = {
+    options: {}
+};
+
+User.Tracks.defaultProps = {
+    options: {}
+};
+
+User.Albums.defaultProps = {
+    options: {}
+};
+User.Artists.defaultProps = {
+    options: {}
+};
+User.Top.defaultProps = {
+    options: {}
+};
 export default User;

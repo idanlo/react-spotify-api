@@ -31,6 +31,7 @@ Search.propTypes = {
     playlist: PropTypes.bool,
     track: PropTypes.bool,
     options: PropTypes.object,
+    /** Process spotify data with render props using props.children as a function */
     children: PropTypes.func.isRequired
 };
 

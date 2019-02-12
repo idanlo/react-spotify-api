@@ -37,24 +37,23 @@ Playlist.Images = props => {
     );
 };
 
-const basicPropTypes = {
-    children: PropTypes.func.isRequired
-};
-
 Playlist.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     options: PropTypes.object
 };
 
 Playlist.Tracks.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     options: PropTypes.object
 };
 
 Playlist.Images.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired
 };
 

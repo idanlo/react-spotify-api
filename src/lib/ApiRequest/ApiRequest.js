@@ -7,9 +7,16 @@ function ApiRequest(props) {
 }
 
 ApiRequest.propTypes = {
+    /** Options object (more info above) */
     options: PropTypes.object,
+    /** url to fetch from (HTTP request) */
     url: PropTypes.string.isRequired,
+    /** Process spotify data with render props using props.children as a function */
     children: PropTypes.func.isRequired
+};
+
+ApiRequest.defaultProps = {
+    options: {}
 };
 
 export default ApiRequest;
