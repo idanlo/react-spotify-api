@@ -11,6 +11,9 @@
 [![GitHub](https://img.shields.io/github/license/idanlo/react-spotify-api.svg)](https://opensource.org/licenses/MIT)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+# Documentation
+[Docs here](https://idanlo.github.io/react-spotify-api/)
+
 ## Install
 
 ```bash
