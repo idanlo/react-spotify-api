@@ -34,7 +34,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dist": "babel src/lib --out-dir dist --copy-files --ignore __snapshots__,__mocks__,test.js --watch"
+    "dist": "babel src/lib --out-dir dist --copy-files --ignore __snapshots__,test.js --watch"
   },
   "eslintConfig": {
     "extends": "react-app"
