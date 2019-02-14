@@ -1,5 +1,7 @@
 module.exports = {
-    webpackConfig: require('react-scripts/config/webpack.config.js'),
+    webpackConfig: require('react-scripts/config/webpack.config.js')(
+        'development'
+    ),
     sections: [
         {
             name: 'Artist components',
