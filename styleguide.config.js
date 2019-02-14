@@ -1,6 +1,5 @@
 module.exports = {
     webpackConfig: require('react-scripts/config/webpack.config.js'),
-    resolver: require('react-docgen').resolver.findAllComponentDefinitions,
     sections: [
         {
             name: 'Artist components',
