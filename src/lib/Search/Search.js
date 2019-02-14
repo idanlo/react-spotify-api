@@ -17,8 +17,8 @@ const Search = props => {
 
     return (
         <ApiRequest url={url} options={options}>
-            {data => {
-                return props.children(data);
+            {(data, loading, error) => {
+                return props.children(data, loading, error);
             }}
         </ApiRequest>
     );
@@ -31,6 +31,7 @@ Search.propTypes = {
     playlist: PropTypes.bool,
     track: PropTypes.bool,
     options: PropTypes.object,
+    /** Process spotify data with render props using props.children as a function */
     children: PropTypes.func.isRequired
 };
 

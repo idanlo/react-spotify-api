@@ -15,26 +15,37 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/addon-info": "^4.1.11",
+    "@storybook/addon-knobs": "^4.1.11",
+    "@storybook/addon-links": "^4.1.11",
+    "@storybook/addons": "^4.1.11",
+    "@storybook/react": "^4.1.11",
+    "@storybook/storybook-deployer": "^2.8.1",
+    "babel-loader": "^8.0.5",
     "cross-env": "^5.2.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-scripts": "2.1.3",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.9.1"
+    "react-scripts": "2.1.3"
   },
   "peerDependencies": {
-      "prop-types": "*",
-      "react": ">=16.8.1"
+    "prop-types": "*",
+    "react": ">=16.8.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dist": "babel src/lib --out-dir dist --copy-files --ignore __snapshots__,test.js --watch"
+    "dist": "babel src/lib --out-dir dist --copy-files --ignore __snapshots__,test.js --watch",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,5 +58,10 @@
   ],
   "dependencies": {
     "axios": "^0.18.0"
+  },
+  "storybook-deployer": {
+    "gitUsername": "idanlo",
+    "gitEmail": "idan2110@gmail.com",
+    "commitMessage": "Deploy Storybook to GitHub Pages"
   }
 }

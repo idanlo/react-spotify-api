@@ -6,7 +6,7 @@ const BASE_URL = 'https://api.spotify.com/v1';
 
 const Track = props => {
     let url = BASE_URL + '/tracks';
-    let options = {};
+    let options = { ...props.options };
     if (Array.isArray(props.id)) {
         options.ids = props.id.join(',');
     } else {
@@ -15,14 +15,14 @@ const Track = props => {
 
     return (
         <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 };
 
 Track.Features = props => {
     let url = BASE_URL + '/audio-features';
-    let options = {};
+    let options = { ...props.options };
     if (Array.isArray(props.id)) {
         options.ids = props.id.join(',');
     } else {
@@ -31,45 +31,64 @@ Track.Features = props => {
 
     return (
         <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 };
 
 Track.Analysis = props => {
     let url = BASE_URL + `/audio-analysis/${props.id}`;
-    let options = {};
 
     return (
-        <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+        <ApiRequest url={url} options={{ ...props.options }}>
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 };
 
-const basicPropTypes = {
-    children: PropTypes.func.isRequired
-};
-
 Track.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
+    /** The id/s of the track/s */
     id: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string)
-    ]).isRequired
+    ]).isRequired,
+    /** Options object (more info above) */
+    options: PropTypes.object
 };
 
 Track.Features.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
+    /** The id/s of the track/s */
     id: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string)
-    ]).isRequired
+    ]).isRequired,
+    /** Options object (more info above) */
+    options: PropTypes.object
 };
 
 Track.Analysis.propTypes = {
-    ...basicPropTypes,
-    id: PropTypes.string.isRequired
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
+    /** The id of the track */
+    id: PropTypes.string.isRequired,
+    /** Options object (more info above) */
+    options: PropTypes.object
+};
+
+Track.defaultProps = {
+    options: {}
+};
+
+Track.Features.defaultProps = {
+    options: {}
+};
+
+Track.Analysis.defaultProps = {
+    options: {}
 };
 
 export default Track;

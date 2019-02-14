@@ -14,7 +14,7 @@ const Artist = props => {
     }
     return (
         <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 };
@@ -24,7 +24,7 @@ Artist.Albums = props => {
     let options = { ...props.options };
     return (
         <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 };
@@ -34,7 +34,7 @@ Artist.Tracks = props => {
     let options = { ...props.options };
     return (
         <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 };
@@ -45,48 +45,56 @@ Artist.Related = props => {
 
     return (
         <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 };
 
-// these prop types are for all Artist components (also sub components like Artist.Related)
-const basicPropTypes = {
-    options: PropTypes.object,
-    id: PropTypes.string.isRequired
-};
-
-// these are default props for all Artist components (also sub components like Artist.Related)
-const basicDefaultProps = {
-    options: {}
-};
-
 Artist.propTypes = {
-    ...basicPropTypes,
+    /** Options object (more info above) */
+    options: PropTypes.object,
+    /** Id of the artist */
     id: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string)
-    ]).isRequired
+    ]).isRequired,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired
 };
 
 Artist.Albums.propTypes = {
-    ...basicPropTypes
+    /** Options object (more info above) */
+    options: PropTypes.object,
+    /** Id of the artist */
+    id: PropTypes.string.isRequired,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired
 };
 
 Artist.Tracks.propTypes = {
-    ...basicPropTypes
+    /** Options object (more info above) */
+    options: PropTypes.object,
+    /** Id of the artist */
+    id: PropTypes.string.isRequired,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired
 };
 
 Artist.Related.propTypes = {
-    ...basicPropTypes
+    /** Options object (more info above) */
+    options: PropTypes.object,
+    /** Id of the artist */
+    id: PropTypes.string.isRequired,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired
 };
 
 Artist.defaultProps = {
-    ...basicDefaultProps
+    options: {}
 };
 
 Artist.Albums.defaultProps = {
-    ...basicDefaultProps
+    options: {}
 };
 
 Artist.Tracks.defaultProps = {
@@ -96,7 +104,11 @@ Artist.Tracks.defaultProps = {
 };
 
 Artist.Related.defaultProps = {
-    ...basicDefaultProps
+    options: {}
 };
+
+Artist.Albums.displayName = 'Artist.Albums';
+Artist.Tracks.displayName = 'Artist.Tracks';
+Artist.Related.displayName = 'Artist.Related';
 
 export default Artist;
