@@ -10,7 +10,7 @@ const Playlist = props => {
 
     return (
         <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 };
@@ -21,7 +21,7 @@ Playlist.Tracks = props => {
 
     return (
         <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 };
@@ -30,27 +30,30 @@ Playlist.Images = props => {
     let url = BASE_URL + `/${props.id}/images`;
     // no options for this endpoint
 
-    return <ApiRequest url={url}>{data => props.children(data)}</ApiRequest>;
-};
-
-const basicPropTypes = {
-    children: PropTypes.func.isRequired
+    return (
+        <ApiRequest url={url}>
+            {(data, loading, error) => props.children(data, loading, error)}
+        </ApiRequest>
+    );
 };
 
 Playlist.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     options: PropTypes.object
 };
 
 Playlist.Tracks.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     options: PropTypes.object
 };
 
 Playlist.Images.propTypes = {
-    ...basicPropTypes,
+    /** Process spotify data with render props using props.children as a function */
+    children: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired
 };
 
