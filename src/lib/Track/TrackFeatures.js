@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ApiRequest from '../ApiRequest/ApiRequest';
 
-const BASE_URL = 'https://api.spotify.com/v1/tracks';
+const BASE_URL = 'https://api.spotify.com/v1/audio-features';
 
-const Track = props => {
+const TrackFeatures = props => {
     let url = BASE_URL;
     let options = { ...props.options };
     if (Array.isArray(props.id)) {
@@ -20,7 +20,7 @@ const Track = props => {
     );
 };
 
-Track.propTypes = {
+TrackFeatures.propTypes = {
     /** Process spotify data with render props using props.children as a function */
     children: PropTypes.func.isRequired,
     /** The id/s of the track/s */
@@ -32,8 +32,8 @@ Track.propTypes = {
     options: PropTypes.object
 };
 
-Track.defaultProps = {
+TrackFeatures.defaultProps = {
     options: {}
 };
 
-export default Track;
+export default TrackFeatures;
