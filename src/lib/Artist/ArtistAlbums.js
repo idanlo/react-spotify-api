@@ -7,8 +7,9 @@ const BASE_URL = 'https://api.spotify.com/v1/artists';
 /**
  * Get Spotify catalog information about an artist’s albums.<br/>
  * Optional parameters can be seen [here](https://developer.spotify.com/documentation/web-api/reference/artists/get-artists-albums/#query-parameters)
- * and in `PROPS & METHODS`
- * @example ../../docs/ArtistAlbums.md
+ * and in `PROPS & METHODS`<br/>
+ * [Response format](https://developer.spotify.com/documentation/web-api/reference/artists/get-artists-albums/#response-format)
+ * @example ../../docs/Artist/ArtistAlbums.md
  */
 const ArtistAlbums = props => {
     let url = BASE_URL + `/${props.id}/albums`;

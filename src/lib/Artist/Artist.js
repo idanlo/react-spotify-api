@@ -6,8 +6,10 @@ const BASE_URL = 'https://api.spotify.com/v1/artists';
 
 /**
  * Get Spotify catalog information for single/multiple artist/s identified by their unique Spotify ID/s.<br/>
- * There are no optional parameters for this type
- * @example ../../docs/Artist.md
+ * There are no optional parameters for this type<br/>
+ * [Response format (single artist)](https://developer.spotify.com/documentation/web-api/reference/artists/get-artist/#response-format)<br/>
+ * [Response format (multiple artists)](https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/#response-format)
+ * @example ../../docs/Artist/Artist.md
  */
 const Artist = props => {
     let url = BASE_URL;

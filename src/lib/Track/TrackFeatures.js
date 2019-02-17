@@ -4,9 +4,15 @@ import ApiRequest from '../ApiRequest/ApiRequest';
 
 const BASE_URL = 'https://api.spotify.com/v1/audio-features';
 
+/**
+ * Get audio feature information for a single track identified by its unique Spotify ID.<br/>
+ * There are no optional parameters for this type<br/>
+ * [Response format](https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/#response-format)
+ * @example ../../docs/Track/TrackFeatures.md
+ */
 const TrackFeatures = props => {
     let url = BASE_URL;
-    let options = { ...props.options };
+    let options = {};
     if (Array.isArray(props.id)) {
         options.ids = props.id.join(',');
     } else {
@@ -27,13 +33,7 @@ TrackFeatures.propTypes = {
     id: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string)
-    ]).isRequired,
-    /** Options object (more info above) */
-    options: PropTypes.object
-};
-
-TrackFeatures.defaultProps = {
-    options: {}
+    ]).isRequired
 };
 
 export default TrackFeatures;

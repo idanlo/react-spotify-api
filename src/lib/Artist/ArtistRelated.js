@@ -6,7 +6,8 @@ const BASE_URL = 'https://api.spotify.com/v1/artists';
 
 /**
  * Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community’s listening history.<br/>
- * There are no optional parameters for this type
+ * There are no optional parameters for this type<br/>
+ * [Response format](https://developer.spotify.com/documentation/web-api/reference/artists/get-related-artists/#response-format)
  */
 const ArtistRelated = props => {
     let url = BASE_URL + `/${props.id}/related-artists`;

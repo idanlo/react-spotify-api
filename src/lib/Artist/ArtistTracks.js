@@ -7,7 +7,8 @@ const BASE_URL = 'https://api.spotify.com/v1/artists';
 /**
  * Get Spotify catalog information about an artist’s top tracks by country.<br/>
  * Optional parameters can be seen [here](https://developer.spotify.com/documentation/web-api/reference/artists/get-artists-top-tracks/#query-parameters)
- * and in `PROPS & METHODS`
+ * and in `PROPS & METHODS`<br/>
+ * [Response format](https://developer.spotify.com/documentation/web-api/reference/artists/get-artists-top-tracks/#respose-format)
  */
 const ArtistTracks = props => {
     let url = BASE_URL + `/${props.id}/top-tracks`;

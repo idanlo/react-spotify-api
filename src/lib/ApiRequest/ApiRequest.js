@@ -7,7 +7,7 @@ function ApiRequest(props) {
 }
 
 ApiRequest.propTypes = {
-    /** Options object (more info above) */
+    /** Options object */
     options: PropTypes.object,
     /** url to fetch from (HTTP request) */
     url: PropTypes.string.isRequired,
