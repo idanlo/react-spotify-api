@@ -27,6 +27,12 @@ module.exports = {
             components: 'src/lib/Playlist/*.js',
             ignore: ['src/lib/Playlist/index.js'],
             exampleMode: 'collapse'
+        },
+        {
+            name: 'Browse components',
+            components: 'src/lib/Browse/*.js',
+            ignore: ['src/lib/Browse/index.js'],
+            exampleMode: 'collapse'
         }
     ]
 };
