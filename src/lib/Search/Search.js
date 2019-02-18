@@ -4,6 +4,12 @@ import ApiRequest from '../ApiRequest/ApiRequest';
 
 const BASE_URL = 'https://api.spotify.com/v1/search';
 
+/**
+ * Get Spotify Catalog information about artists, albums, tracks or playlists that match a keyword string.<br/>
+ * [Writing a query - guidelines](https://developer.spotify.com/documentation/web-api/reference/search/search/#writing-a-query---guidelines)<br/>
+ * [Response format](https://developer.spotify.com/documentation/web-api/reference/search/search/#response-format)
+ * @example ../../docs/Search/Search.md
+ */
 const Search = props => {
     let url = BASE_URL;
     let options = { ...props.options };
@@ -25,14 +31,29 @@ const Search = props => {
 };
 
 Search.propTypes = {
+    /** Search query keywords and optional field filters and operators. */
     query: PropTypes.string.isRequired,
+    /** Get results for albums */
     album: PropTypes.bool,
+    /** Get results for artists */
     artist: PropTypes.bool,
+    /** Get results for playlists */
     playlist: PropTypes.bool,
+    /** Get results for tracks */
     track: PropTypes.bool,
-    options: PropTypes.object,
+    /** Options object */
+    options: PropTypes.shape({
+        market: PropTypes.string,
+        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        include_external: PropTypes.string
+    }),
     /** Process spotify data with render props using props.children as a function */
     children: PropTypes.func.isRequired
+};
+
+Search.defaultProps = {
+    options: {}
 };
 
 export default Search;

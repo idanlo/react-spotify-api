@@ -39,6 +39,11 @@ module.exports = {
             components: 'src/lib/User/*.js',
             ignore: ['src/lib/User/index.js'],
             exampleMode: 'collapse'
+        },
+        {
+            name: 'Search component',
+            components: 'src/lib/Search/*.js',
+            exampleMode: 'collapse'
         }
     ]
 };
