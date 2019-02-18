@@ -21,6 +21,12 @@ module.exports = {
             components: 'src/lib/Album/*.js',
             ignore: ['src/lib/Album/index.js'],
             exampleMode: 'collapse'
+        },
+        {
+            name: 'Playlist components',
+            components: 'src/lib/Playlist/*.js',
+            ignore: ['src/lib/Playlist/index.js'],
+            exampleMode: 'collapse'
         }
     ]
 };
