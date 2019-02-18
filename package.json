@@ -29,7 +29,8 @@
   },
   "peerDependencies": {
     "prop-types": "*",
-    "react": ">=16.8.1"
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
   },
   "scripts": {
     "start": "react-scripts start",
