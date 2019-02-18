@@ -37,7 +37,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --no-watch",
     "eject": "react-scripts eject",
-    "dist": "babel src/lib --out-dir dist --copy-files --ignore src/lib/**/*.test.js --watch",
+    "dist": "babel src/lib --out-dir dist --ignore \"src/lib/**/*.test.js\"",
     "styleguide": "styleguidist server",
     "styleguide-build": "styleguidist build"
   },
