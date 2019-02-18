@@ -16,7 +16,14 @@ import {
     BrowseCategories
 } from './Browse';
 import { Playlist, PlaylistImages, PlaylistTracks } from './Playlist';
-import User from './User/User';
+import {
+    User,
+    UserPlaylists,
+    UserTop,
+    UserArtists,
+    UserAlbums,
+    UserTracks
+} from './User';
 import Search from './Search/Search';
 
 // Context
@@ -43,8 +50,11 @@ export {
 // Playlist Components
 export { Playlist, PlaylistTracks, PlaylistImages };
 
+// User components
+export { User, UserPlaylists, UserTop, UserArtists, UserAlbums, UserTracks };
+
 // all other (TODO:)
-export { User, Search };
+export { Search };
 
 // Hooks
 export { useArtist, useTrack };

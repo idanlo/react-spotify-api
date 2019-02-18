@@ -33,6 +33,12 @@ module.exports = {
             components: 'src/lib/Browse/*.js',
             ignore: ['src/lib/Browse/index.js'],
             exampleMode: 'collapse'
+        },
+        {
+            name: 'User components',
+            components: 'src/lib/User/*.js',
+            ignore: ['src/lib/User/index.js'],
+            exampleMode: 'collapse'
         }
     ]
 };
