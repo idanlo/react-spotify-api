@@ -38,8 +38,8 @@
     "test": "react-scripts test --no-watch",
     "eject": "react-scripts eject",
     "dist": "babel src/lib --out-dir dist --copy-files --ignore __snapshots__,test.js --watch",
-    "styleguide": "styleguide server",
-    "styleguide-build": "styleguide build"
+    "styleguide": "styleguidist server",
+    "styleguide-build": "styleguidist build"
   },
   "eslintConfig": {
     "extends": "react-app"
