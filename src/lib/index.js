@@ -7,9 +7,15 @@ import {
     useArtist
 } from './Artist';
 import { Track, TrackFeatures, TrackAnalysis, useTrack } from './Track';
-import Album from './Album/Album';
-import Browse from './Browse/Browse';
-import Playlist from './Playlist/Playlist';
+import { Album, AlbumTracks } from './Album';
+import {
+    BrowseFeatured,
+    BrowseNew,
+    BrowseCategoryPlaylists,
+    BrowseRecommendations,
+    BrowseCategories
+} from './Browse';
+import { Playlist, PlaylistImages, PlaylistTracks } from './Playlist';
 import User from './User/User';
 import Search from './Search/Search';
 
@@ -22,8 +28,23 @@ export { Artist, ArtistAlbums, ArtistTracks, ArtistRelated };
 // Track components
 export { Track, TrackFeatures, TrackAnalysis };
 
+// Album components
+export { Album, AlbumTracks };
+
+// Browse Components
+export {
+    BrowseFeatured,
+    BrowseNew,
+    BrowseCategoryPlaylists,
+    BrowseRecommendations,
+    BrowseCategories
+};
+
+// Playlist Components
+export { Playlist, PlaylistTracks, PlaylistImages };
+
 // all other (TODO:)
-export { Album, Browse, Playlist, User, Search };
+export { User, Search };
 
 // Hooks
 export { useArtist, useTrack };

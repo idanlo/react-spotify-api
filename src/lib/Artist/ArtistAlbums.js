@@ -25,8 +25,8 @@ ArtistAlbums.propTypes = {
     options: PropTypes.shape({
         include_groups: PropTypes.string,
         market: PropTypes.string,
-        limit: PropTypes.string,
-        offset: PropTypes.string
+        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     }),
     /** Id of the artist */
     id: PropTypes.string.isRequired,
