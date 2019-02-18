@@ -11,8 +11,7 @@
 [![GitHub](https://img.shields.io/github/license/idanlo/react-spotify-api.svg)](https://opensource.org/licenses/MIT)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-# Documentation
-[Docs here](https://idanlo.github.io/react-spotify-api/)
+# [Documentation](https://idanlo.github.io/react-spotify-api/)
 
 ## Install
 
@@ -20,41 +19,59 @@
 npm install --save react-spotify-api
 ```
 
-## Usage
+## Component usage
 
 ```jsx
 import React, { Component } from 'react'
 
 import { SpotifyApiContext, Artist } from 'react-spotify-api'
 
-class Example extends Component {
-  render () {
+function Example(props) {
     return (
-      <SpotifyApiContext.Provider value={this.props.token}>
-        <Artist id={this.props.id}>
-          {(artist, loading, error) =>
-            artist ? (
-              <ul>
-                <li>{artist.name}</li>
-                <ul>
-                  {artist.genres.map(genre => (
-                    <li key={genre}>{genre}</li>
-                  ))}
-                </ul>
-              </ul>
-            ) : loading ? (
-              <h1>Loading...</h1>
-            ) : (
-              <h1>There has been an error</h1>
-            )
-          }
-        </Artist>
-      </SpotifyApiContext.Provider>
+        <SpotifyApiContext.Provider value={props.token}>
+            <Artist id={props.id}>
+                {(artist, loading, error) =>
+                    artist ? (
+                        <div>
+                            <h1>{artist.name}</h1>
+                            <ul>
+                                {artist.genres.map(genre => (
+                                <li key={genre}>{genre}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ) : null
+                }
+            </Artist>
+        </SpotifyApiContext.Provider> 
     )
-  }
+    console.log()
 }
 ```
 
+## Hooks usage *(assuming the ExampleHooks component is wrapped with the SpotifyApiContext.Provider)*
+```jsx 
+import React from 'react'
+
+import { useArtist } from 'react-spotify-api'
+
+function ExampleHooks(props) {
+    const {data, loading, error} = useArtist(props.id);
+
+    return (
+        artist ? (
+            <div>
+                <h1>{artist.name}</h1>
+                <ul>
+                    {artist.genres.map(genre => (
+                        <li key={genre}>{genre}</li>
+                    ))}
+                </ul>
+            </div>
+        ) : null
+    )
+}   
+```
 ## License
 
 MIT © [idanlo](https://github.com/idanlo)
