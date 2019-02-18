@@ -27,7 +27,7 @@ const Artist = props => {
 };
 
 Artist.propTypes = {
-    /** Id of the artist */
+    /** ID/s of the artist/s */
     id: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string)

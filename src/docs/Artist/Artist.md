@@ -5,31 +5,22 @@ import { Artist } from 'react-spotify-api'
 
 ### Single Artist
 ```jsx static
-function App() {
-    return (
-        <Artist id="1XpDYCrUJnvCo9Ez6yeMWh">
-            {(artist, loading, error) => (
-                artist ? <h1>{artist.name} : null
-            )}
-        </Artist>
-    )
-}
+<Artist id="1XpDYCrUJnvCo9Ez6yeMWh">
+    {(artist, loading, error) => (
+        artist ? <h1>{artist.name} : null
+    )}
+</Artist>
 ```
 
 ### Multiple Artists
 ```jsx static
-function App() {
-    return (
-        <Artist id={["1XpDYCrUJnvCo9Ez6yeMWh","7jy3rLJdDQY21OgRLCZ9sD"]}>
-            {(artists, loading, error) => (
-                artists ? (
-                    artists.map(artist => (
-                        <h1 key={artist.id}>{artist.name}</h1>
-                    ))
-                ) : null
-            )}
-        </Artist>
-    )
-}
-
+<Artist id={["1XpDYCrUJnvCo9Ez6yeMWh","7jy3rLJdDQY21OgRLCZ9sD"]}>
+    {(artists, loading, error) => (
+        artists ? (
+            artists.map(artist => (
+                <h1 key={artist.id}>{artist.name}</h1>
+            ))
+        ) : null
+    )}
+</Artist>
 ```

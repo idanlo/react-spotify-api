@@ -15,6 +15,12 @@ module.exports = {
             components: 'src/lib/Track/*.js',
             ignore: ['src/lib/Track/index.js', 'src/lib/Track/useTrack.js'],
             exampleMode: 'collapse'
+        },
+        {
+            name: 'Album components',
+            components: 'src/lib/Album/*.js',
+            ignore: ['src/lib/Album/index.js'],
+            exampleMode: 'collapse'
         }
     ]
 };
