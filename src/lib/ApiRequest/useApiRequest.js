@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import { serialize } from '../utils';
 import { SpotifyApiContext } from '../';
 
 function useApiRequest(url, options = {}) {
@@ -11,15 +11,15 @@ function useApiRequest(url, options = {}) {
     React.useEffect(() => {
         console.log('FETCHING...');
         setLoading(true);
-        axios
-            .get(url, {
-                params: options,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-            .then(res => {
-                setData(res.data);
+        fetch(url + serialize(options), {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                setData(data);
                 setLoading(false);
             })
             .catch(err => {

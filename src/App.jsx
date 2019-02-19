@@ -2,15 +2,32 @@ import React, { Component } from 'react';
 
 import {
     Artist,
+    ArtistAlbums,
+    ArtistRelated,
+    ArtistTracks,
     useArtist,
     Track,
+    TrackAnalysis,
+    TrackFeatures,
     useTrack,
     Album,
+    AlbumTracks,
     Playlist,
-    Browse,
+    PlaylistImages,
+    PlaylistTracks,
+    BrowseCategories,
+    BrowseNew,
+    BrowseRecommendations,
+    BrowseFeatured,
+    BrowseCategoryPlaylists,
+    BrowseCategory,
     User,
-    Search,
-    SpotifyApiContext
+    UserAlbums,
+    UserArtists,
+    UserTop,
+    UserTracks,
+    UserPlaylists,
+    Search
 } from './lib';
 
 export function TestUseArtist() {
@@ -79,7 +96,7 @@ export function TestUseTrack() {
 export default class App extends Component {
     render() {
         return (
-            <SpotifyApiContext.Provider value="BQAfFTUjhFdecmr73LqGz7DejaPLDQ-TbDDWfZ-tAq8_0J51nxXx3km7Xa9sWjw3I54HLvi-aFsGliLl0iy4OjfKhMSAP-X1QNROlZg-fNGocg9fm4DOqxrIPZTKtawfdaXHOtbA3RseDvdmVcc0Py752uXxbJ0Q1wCxsU2PuRdWtnwLLEiDujMZfAgFNwpERd1U1MOW2Nh0Gkn7IXjripNYZ_w_H_j4K4d6FBpxPOCX0RPqBmn-F668_taA9C2jZHTFuta8W2iWajrI3RrYxcqvUVFIam172DLqUQ0">
+            <div>
                 <h1>Artist Component</h1>
                 <Artist id="6eUKZXaKkcviH0Ku9w2n3V">
                     {(artist, loading, error) =>
@@ -121,7 +138,7 @@ export default class App extends Component {
                     }
                 </Artist>
                 <h2>Artist.Albums Component</h2>
-                <Artist.Albums id="6eUKZXaKkcviH0Ku9w2n3V">
+                <ArtistAlbums id="6eUKZXaKkcviH0Ku9w2n3V">
                     {albums =>
                         albums ? (
                             <ul>
@@ -131,9 +148,9 @@ export default class App extends Component {
                             </ul>
                         ) : null
                     }
-                </Artist.Albums>
+                </ArtistAlbums>
                 <h2>Artist.Tracks Component</h2>
-                <Artist.Tracks id="6eUKZXaKkcviH0Ku9w2n3V">
+                <ArtistTracks id="6eUKZXaKkcviH0Ku9w2n3V">
                     {tracks =>
                         tracks ? (
                             <ul>
@@ -143,9 +160,9 @@ export default class App extends Component {
                             </ul>
                         ) : null
                     }
-                </Artist.Tracks>
+                </ArtistTracks>
                 <h2>Artist.Related Component</h2>
-                <Artist.Related id="6eUKZXaKkcviH0Ku9w2n3V">
+                <ArtistRelated id="6eUKZXaKkcviH0Ku9w2n3V">
                     {artists =>
                         artists ? (
                             <ul>
@@ -155,7 +172,7 @@ export default class App extends Component {
                             </ul>
                         ) : null
                     }
-                </Artist.Related>
+                </ArtistRelated>
                 <h1>Track Component</h1>
                 <Track id="1J5ZXurCRQdFHWfOiFt12x">
                     {track =>
@@ -199,7 +216,7 @@ export default class App extends Component {
                     }
                 </Track>
                 <h2>Track.Features Component</h2>
-                <Track.Features id="1J5ZXurCRQdFHWfOiFt12x">
+                <TrackFeatures id="1J5ZXurCRQdFHWfOiFt12x">
                     {features =>
                         features ? (
                             <ul>
@@ -211,9 +228,9 @@ export default class App extends Component {
                             </ul>
                         ) : null
                     }
-                </Track.Features>
+                </TrackFeatures>
                 <h2>Track.Features for multiple IDs</h2>
-                <Track.Features
+                <TrackFeatures
                     id={['1J5ZXurCRQdFHWfOiFt12x', '0tGkxA0oybkQ3iR6LLXPjZ']}
                 >
                     {features =>
@@ -231,13 +248,13 @@ export default class App extends Component {
                               ))
                             : null
                     }
-                </Track.Features>
+                </TrackFeatures>
                 <h2>Track.Analysis Component</h2>
                 <p>
                     note: the data received is large so it might take longer for
                     the response to come back than other requests to their API
                 </p>
-                <Track.Analysis id="1J5ZXurCRQdFHWfOiFt12x">
+                <TrackAnalysis id="1J5ZXurCRQdFHWfOiFt12x">
                     {analysis =>
                         analysis ? (
                             <ul>
@@ -251,7 +268,7 @@ export default class App extends Component {
                             </ul>
                         ) : null
                     }
-                </Track.Analysis>
+                </TrackAnalysis>
                 <h1>Album Component</h1>
                 <Album id="4ueGcY7b6BzBFyssWpEjZb">
                     {album => {
@@ -300,7 +317,7 @@ export default class App extends Component {
                     }}
                 </Album>
                 <h2>Album.Tracks Component</h2>
-                <Album.Tracks id="4ueGcY7b6BzBFyssWpEjZb">
+                <AlbumTracks id="4ueGcY7b6BzBFyssWpEjZb">
                     {tracks => {
                         return tracks ? (
                             <ul>
@@ -310,7 +327,7 @@ export default class App extends Component {
                             </ul>
                         ) : null;
                     }}
-                </Album.Tracks>
+                </AlbumTracks>
                 <h1>Playlist Component</h1>
                 <Playlist
                     id="060QHhmOlYMEfFdxl4NpAS"
@@ -333,7 +350,7 @@ export default class App extends Component {
                     }
                 </Playlist>
                 <h2>Playlist.Tracks Component</h2>
-                <Playlist.Tracks
+                <PlaylistTracks
                     id="060QHhmOlYMEfFdxl4NpAS"
                     options={{ limit: 10 }}
                 >
@@ -348,9 +365,9 @@ export default class App extends Component {
                             </ul>
                         ) : null
                     }
-                </Playlist.Tracks>
+                </PlaylistTracks>
                 <h2>Playlist.Images Component</h2>
-                <Playlist.Images id="060QHhmOlYMEfFdxl4NpAS">
+                <PlaylistImages id="060QHhmOlYMEfFdxl4NpAS">
                     {images =>
                         images && images.length > 0 ? (
                             <img
@@ -359,7 +376,7 @@ export default class App extends Component {
                             /> // last image is smallest one
                         ) : null
                     }
-                </Playlist.Images>
+                </PlaylistImages>
                 <h1>Browse Component</h1>
                 <p>
                     All components in this category are using the dot notation
@@ -367,7 +384,7 @@ export default class App extends Component {
                     no default for Browse
                 </p>
                 <h2>Browse.Category (no ID given)</h2>
-                <Browse.Category>
+                <BrowseCategories>
                     {categories => {
                         return categories ? (
                             <ul>
@@ -381,9 +398,9 @@ export default class App extends Component {
                             </ul>
                         ) : null;
                     }}
-                </Browse.Category>
+                </BrowseCategories>
                 <h2>Browse.Category (ID given)</h2>
-                <Browse.Category id="chill">
+                <BrowseCategory id="chill">
                     {category => {
                         return category ? (
                             <ul>
@@ -397,11 +414,11 @@ export default class App extends Component {
                             </ul>
                         ) : null;
                     }}
-                </Browse.Category>
+                </BrowseCategory>
                 <h2>
                     Browse.Category with playlists prop set to true (ID given)
                 </h2>
-                <Browse.Category id="chill" playlists>
+                <BrowseCategoryPlaylists id="chill" playlists>
                     {playlists => {
                         return playlists ? (
                             <ul>
@@ -415,9 +432,9 @@ export default class App extends Component {
                             </ul>
                         ) : null;
                     }}
-                </Browse.Category>
+                </BrowseCategoryPlaylists>
                 <h2>Browse.Featured Component</h2>
-                <Browse.Featured>
+                <BrowseFeatured>
                     {playlists => {
                         return playlists ? (
                             <React.Fragment>
@@ -434,9 +451,9 @@ export default class App extends Component {
                             </React.Fragment>
                         ) : null;
                     }}
-                </Browse.Featured>
+                </BrowseFeatured>
                 <h2>Browse.New Component</h2>
-                <Browse.New>
+                <BrowseNew>
                     {albums => {
                         return albums ? (
                             <ul>
@@ -446,9 +463,9 @@ export default class App extends Component {
                             </ul>
                         ) : null;
                     }}
-                </Browse.New>
+                </BrowseNew>
                 <h2>Browse.Recommendations Component</h2>
-                <Browse.Recommendations
+                <BrowseRecommendations
                     options={{
                         seed_artists:
                             '0L8ExT028jH3ddEcZwqJJ5,34gCWollNqYlcodydhFabx'
@@ -481,7 +498,7 @@ export default class App extends Component {
                             </ul>
                         ) : null;
                     }}
-                </Browse.Recommendations>
+                </BrowseRecommendations>
                 <h1>User Component</h1>
                 <p>
                     using the User component with no 'id' prop will return data
@@ -515,7 +532,7 @@ export default class App extends Component {
                     return data for the user that belongs to the access_token
                     received in the context provider
                 </p>
-                <User.Playlists options={{ limit: 3 }}>
+                <UserPlaylists options={{ limit: 3 }}>
                     {playlists =>
                         playlists ? (
                             <ul>
@@ -525,9 +542,9 @@ export default class App extends Component {
                             </ul>
                         ) : null
                     }
-                </User.Playlists>
+                </UserPlaylists>
                 <hr />
-                <User.Playlists id="spotify" options={{ limit: 3 }}>
+                <UserPlaylists id="spotify" options={{ limit: 3 }}>
                     {playlists =>
                         playlists ? (
                             <ul>
@@ -537,13 +554,13 @@ export default class App extends Component {
                             </ul>
                         ) : null
                     }
-                </User.Playlists>
+                </UserPlaylists>
                 <h2>User.Tracks Component - get user saved tracks</h2>
                 <p>
                     this component requires that the access token will have the
                     'user-library-read' scope
                 </p>
-                <User.Tracks options={{ limit: 8 }}>
+                <UserTracks options={{ limit: 8 }}>
                     {tracks => {
                         return tracks ? (
                             <ul>
@@ -555,13 +572,13 @@ export default class App extends Component {
                             </ul>
                         ) : null;
                     }}
-                </User.Tracks>
+                </UserTracks>
                 <h2>User.Albums Component - get user saved albums</h2>
                 <p>
                     this component also requires that the access token will have
                     the 'user-library-read' scope
                 </p>
-                <User.Albums>
+                <UserAlbums>
                     {albums => {
                         return albums ? (
                             <ul>
@@ -573,13 +590,13 @@ export default class App extends Component {
                             </ul>
                         ) : null;
                     }}
-                </User.Albums>
+                </UserAlbums>
                 <h2>User.Artists Component - get user saved artists</h2>
                 <p>
                     this component requires that the access token will have the
                     'user-follow-read' scope
                 </p>
-                <User.Artists>
+                <UserArtists>
                     {artists => {
                         return artists ? (
                             <ul>
@@ -589,13 +606,13 @@ export default class App extends Component {
                             </ul>
                         ) : null;
                     }}
-                </User.Artists>
+                </UserArtists>
                 <h2>User.Top Component - get user top artists or tracks</h2>
                 <p>
                     this component requires that the access token will have the
                     'user-top-read' scope
                 </p>
-                <User.Top type="tracks" options={{ limit: 10 }}>
+                <UserTop type="tracks" options={{ limit: 10 }}>
                     {tracks => {
                         return tracks ? (
                             <ul>
@@ -605,7 +622,7 @@ export default class App extends Component {
                             </ul>
                         ) : null;
                     }}
-                </User.Top>
+                </UserTop>
                 <h2>Search Component</h2>
                 <Search query="ed" album artist options={{ limit: 5 }}>
                     {data =>
@@ -627,7 +644,7 @@ export default class App extends Component {
                         ) : null
                     }
                 </Search>
-            </SpotifyApiContext.Provider>
+            </div>
         );
     }
 }

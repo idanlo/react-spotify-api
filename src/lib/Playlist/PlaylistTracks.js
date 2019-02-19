@@ -26,8 +26,8 @@ PlaylistTracks.propTypes = {
     /** Options object */
     options: PropTypes.shape({
         fields: PropTypes.string,
-        limit: PropTypes.string,
-        offset: PropTypes.string,
+        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         market: PropTypes.string
     }),
     /** Process spotify data with render props using props.children as a function */
