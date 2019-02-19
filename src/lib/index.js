@@ -13,7 +13,8 @@ import {
     BrowseNew,
     BrowseCategoryPlaylists,
     BrowseRecommendations,
-    BrowseCategories
+    BrowseCategories,
+    BrowseCategory
 } from './Browse';
 import { Playlist, PlaylistImages, PlaylistTracks } from './Playlist';
 import {
@@ -44,7 +45,8 @@ export {
     BrowseNew,
     BrowseCategoryPlaylists,
     BrowseRecommendations,
-    BrowseCategories
+    BrowseCategories,
+    BrowseCategory
 };
 
 // Playlist Components
