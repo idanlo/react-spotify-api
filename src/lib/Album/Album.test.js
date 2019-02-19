@@ -1,13 +1,11 @@
 import React from 'react';
-import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme';
 import Album from './Album';
-
-configure({ adapter: new Adapter() });
 
 describe('<Album />', () => {
     it('should render', () => {
         const wrapper = shallow(<Album id="123">{() => null}</Album>);
+
         expect(wrapper).toBeTruthy();
     });
 

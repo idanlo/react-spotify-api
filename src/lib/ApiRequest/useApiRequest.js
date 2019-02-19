@@ -8,7 +8,7 @@ function useApiRequest(url, options = {}) {
     const [data, setData] = React.useState(null);
     const token = React.useContext(SpotifyApiContext);
 
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
         console.log('FETCHING...');
         setLoading(true);
         fetch(url + serialize(options), {
@@ -19,6 +19,7 @@ function useApiRequest(url, options = {}) {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 setData(data);
                 setLoading(false);
             })
