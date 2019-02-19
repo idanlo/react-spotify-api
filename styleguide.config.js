@@ -2,8 +2,12 @@ module.exports = {
     webpackConfig: require('react-scripts/config/webpack.config.js')(
         'development'
     ),
-    // components: 'src/lib/**/*.js'
+    title: 'React Spotify Api Documentation',
     sections: [
+        {
+            name: 'Introduction',
+            content: 'src/docs/main.md'
+        },
         {
             name: 'Artist components',
             components: 'src/lib/Artist/*.js',
