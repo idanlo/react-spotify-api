@@ -9,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1/browse';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/browse/get-list-featured-playlists/#response-format)
  * @example ../../docs/Browse/BrowseFeatured.md
  */
-const BrowseFeatured = props => {
+function BrowseFeatured(props) {
     let url = BASE_URL + `/featured-playlists`;
     let options = { ...props.options };
 
@@ -18,7 +18,7 @@ const BrowseFeatured = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 BrowseFeatured.propTypes = {
     /** Options object */

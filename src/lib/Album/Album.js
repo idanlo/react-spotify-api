@@ -11,7 +11,7 @@ const BASE_URL = 'https://api.spotify.com/v1/albums';
  * [Response format (multiple albums)](https://developer.spotify.com/documentation/web-api/reference/albums/get-several-albums/#response-format)
  * @example ../../docs/Album/Album.md
  */
-const Album = props => {
+function Album(props) {
     let url = BASE_URL;
     let options = { ...props.options };
     if (Array.isArray(props.id)) {
@@ -25,7 +25,7 @@ const Album = props => {
             {data => props.children(data)}
         </ApiRequest>
     );
-};
+}
 
 Album.propTypes = {
     /** ID/s of the album/s */

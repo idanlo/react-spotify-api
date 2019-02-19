@@ -9,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1/me/top';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/personalization/get-users-top-artists-and-tracks/#response-format)
  * @example ../../docs/User/UserTop.md
  */
-const UserTop = props => {
+function UserTop(props) {
     let url = BASE_URL + `/${props.type}`;
     let options = { ...props.options };
 
@@ -18,7 +18,7 @@ const UserTop = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 UserTop.propTypes = {
     /** Options object */

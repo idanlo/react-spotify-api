@@ -9,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1/browse/categories';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/browse/get-list-categories/#response-format)
  * @example ../../docs/Browse/BrowseCategories.md
  */
-const BrowseCategories = props => {
+function BrowseCategories(props) {
     let url = BASE_URL;
     let options = { ...props.options };
 
@@ -18,7 +18,7 @@ const BrowseCategories = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 BrowseCategories.propTypes = {
     /** Options object */

@@ -10,7 +10,7 @@ const BASE_URL = 'https://api.spotify.com/v1/audio-analysis';
  * [Reponse format](https://developer.spotify.com/documentation/web-api/reference/tracks/get-track/#response-format)
  * @example ../../docs/Track/TrackAnalysis.md
  */
-const TrackAnalysis = props => {
+function TrackAnalysis(props) {
     let url = BASE_URL + `/${props.id}`;
 
     return (
@@ -18,7 +18,7 @@ const TrackAnalysis = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 TrackAnalysis.propTypes = {
     /** Process spotify data with render props using props.children as a function */

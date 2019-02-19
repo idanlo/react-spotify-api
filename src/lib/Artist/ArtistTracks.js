@@ -10,7 +10,7 @@ const BASE_URL = 'https://api.spotify.com/v1/artists';
  * and in `PROPS & METHODS`<br/>
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/artists/get-artists-top-tracks/#respose-format)
  */
-const ArtistTracks = props => {
+function ArtistTracks(props) {
     let url = BASE_URL + `/${props.id}/top-tracks`;
     let options = { ...props.options };
     return (
@@ -18,7 +18,7 @@ const ArtistTracks = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 ArtistTracks.propTypes = {
     /** Options object (default market is `from_token`) */
     options: PropTypes.shape({

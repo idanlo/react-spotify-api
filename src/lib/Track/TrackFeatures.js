@@ -10,7 +10,7 @@ const BASE_URL = 'https://api.spotify.com/v1/audio-features';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/#response-format)
  * @example ../../docs/Track/TrackFeatures.md
  */
-const TrackFeatures = props => {
+function TrackFeatures(props) {
     let url = BASE_URL;
     let options = {};
     if (Array.isArray(props.id)) {
@@ -24,7 +24,7 @@ const TrackFeatures = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 TrackFeatures.propTypes = {
     /** Process spotify data with render props using props.children as a function */

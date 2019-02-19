@@ -9,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1/me/tracks';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/library/get-users-saved-tracks/#response-format)
  * @example ../../docs/User/UserTracks.md
  */
-const UserTracks = props => {
+function UserTracks(props) {
     let url = BASE_URL;
     let options = { ...props.options };
 
@@ -18,7 +18,7 @@ const UserTracks = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 UserTracks.propTypes = {
     /** Options object */

@@ -10,7 +10,7 @@ const BASE_URL = 'https://api.spotify.com/v1';
  * [Response format (different user profile)](https://developer.spotify.com/documentation/web-api/reference/users-profile/get-users-profile/#response-format)
  * @example ../../docs/User/User.md
  */
-const User = props => {
+function User(props) {
     let url = BASE_URL;
     let options = { ...props.options };
     if (props.id) {
@@ -24,7 +24,7 @@ const User = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 User.propTypes = {
     /** The Spotify ID of the user (if not specified then current user) */

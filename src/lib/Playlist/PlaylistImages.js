@@ -10,7 +10,7 @@ const BASE_URL = 'https://api.spotify.com/v1/playlists';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/playlists/get-playlist-cover/#response-format)
  * @example ../../docs/Playlist/PlaylistImages.md
  */
-const PlaylistImages = props => {
+function PlaylistImages(props) {
     let url = BASE_URL + `/${props.id}/images`;
     // no options for this endpoint
 
@@ -19,7 +19,7 @@ const PlaylistImages = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 PlaylistImages.propTypes = {
     /** The Spotify ID for the playlist. */

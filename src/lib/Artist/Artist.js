@@ -11,7 +11,7 @@ const BASE_URL = 'https://api.spotify.com/v1/artists';
  * [Response format (multiple artists)](https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/#response-format)
  * @example ../../docs/Artist/Artist.md
  */
-const Artist = props => {
+function Artist(props) {
     let url = BASE_URL;
     let options = {};
     if (Array.isArray(props.id)) {
@@ -24,7 +24,7 @@ const Artist = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 Artist.propTypes = {
     /** ID/s of the artist/s */

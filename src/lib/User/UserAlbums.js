@@ -9,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1/me/albums';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/library/get-users-saved-albums/#response-format)
  * @example ../../docs/User/UserAlbums.md
  */
-const UserAlbums = props => {
+function UserAlbums(props) {
     let url = BASE_URL;
     let options = { ...props.options };
 
@@ -18,7 +18,7 @@ const UserAlbums = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 UserAlbums.propTypes = {
     /** Options object */
     options: PropTypes.shape({

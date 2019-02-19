@@ -9,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1/artists';
  * There are no optional parameters for this type<br/>
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/artists/get-related-artists/#response-format)
  */
-const ArtistRelated = props => {
+function ArtistRelated(props) {
     let url = BASE_URL + `/${props.id}/related-artists`;
     let options = {};
 
@@ -18,7 +18,7 @@ const ArtistRelated = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 ArtistRelated.propTypes = {
     /** Id of the artist */

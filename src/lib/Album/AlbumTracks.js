@@ -10,7 +10,7 @@ const BASE_URL = 'https://api.spotify.com/v1/albums';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/albums/get-albums-tracks/#response-format)
  * @example ../../docs/Album/AlbumTracks.md
  */
-const AlbumTracks = props => {
+function AlbumTracks(props) {
     let url = BASE_URL + `/${props.id}/tracks`;
     let options = { ...props.options };
 
@@ -19,7 +19,7 @@ const AlbumTracks = props => {
             {data => props.children(data)}
         </ApiRequest>
     );
-};
+}
 
 AlbumTracks.propTypes = {
     /** The Spotify ID for the album */

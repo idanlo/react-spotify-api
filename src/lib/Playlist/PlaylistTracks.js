@@ -9,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1/playlists';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/playlists/get-playlists-tracks/#response-format)
  * @example ../../docs/Playlist/PlaylistTracks.md
  */
-const PlaylistTracks = props => {
+function PlaylistTracks(props) {
     let url = BASE_URL + `/${props.id}/tracks`;
     let options = { ...props.options };
 
@@ -18,7 +18,7 @@ const PlaylistTracks = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 PlaylistTracks.propTypes = {
     /** The Spotify ID for the playlist. */

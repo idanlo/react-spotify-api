@@ -9,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1/me/following';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/follow/get-followed/#response-format)
  * @example ../../docs/User/UserArtists.md
  */
-const UserArtists = props => {
+function UserArtists(props) {
     let url = BASE_URL;
     let options = { ...props.options, type: 'artist' };
 
@@ -18,7 +18,7 @@ const UserArtists = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 UserArtists.propTypes = {
     /** Options object */

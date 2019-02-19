@@ -10,7 +10,7 @@ const BASE_URL = 'https://api.spotify.com/v1/search';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/search/search/#response-format)
  * @example ../../docs/Search/Search.md
  */
-const Search = props => {
+function Search(props) {
     let url = BASE_URL;
     let options = { ...props.options };
     let type = [];
@@ -28,7 +28,7 @@ const Search = props => {
             }}
         </ApiRequest>
     );
-};
+}
 
 Search.propTypes = {
     /** Search query keywords and optional field filters and operators. */

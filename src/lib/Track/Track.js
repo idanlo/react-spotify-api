@@ -11,7 +11,7 @@ const BASE_URL = 'https://api.spotify.com/v1/tracks';
  * [Response format (multiple tracks)](https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/#response-format)
  * @example ../../docs/Track/Track.md
  */
-const Track = props => {
+function Track(props) {
     let url = BASE_URL;
     let options = { ...props.options };
     if (Array.isArray(props.id)) {
@@ -25,7 +25,7 @@ const Track = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 Track.propTypes = {
     /** Process spotify data with render props using props.children as a function */

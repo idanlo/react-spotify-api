@@ -9,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/playlists/get-list-users-playlists/#response-format)
  * @example ../../docs/User/UserPlaylists.md
  */
-const UserPlaylists = props => {
+function UserPlaylists(props) {
     let url = BASE_URL;
     let options = { ...props.options };
     if (props.id) {
@@ -23,7 +23,7 @@ const UserPlaylists = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 UserPlaylists.propTypes = {
     /** The id of the user */

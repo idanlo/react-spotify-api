@@ -9,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1/browse/new-releases';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/browse/get-list-new-releases/#response-format)
  * @example ../../docs/Browse/BrowseNew.md
  */
-const BrowseNew = props => {
+function BrowseNew(props) {
     let url = BASE_URL;
     let options = { ...props.options };
 
@@ -18,7 +18,7 @@ const BrowseNew = props => {
             {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
-};
+}
 
 BrowseNew.propTypes = {
     /** Options object */
