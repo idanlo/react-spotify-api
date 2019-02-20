@@ -28,6 +28,7 @@ function useApiRequest(url, options = {}) {
             setLoading(false);
         } catch (e) {
             console.log('[useApiRequest]', e);
+            setLoading(false);
             setError(true);
         }
     }
