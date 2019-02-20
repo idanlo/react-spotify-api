@@ -7,5 +7,5 @@ export function serialize(obj) {
             );
         }
     }
-    return '?' + str.join('&');
+    return str.length > 0 ? '?' + str.join('&') : '';
 }
