@@ -28,7 +28,7 @@ import { SpotifyApiContext } from 'react-spotify-api'
 ```
 ### Wrap your app with it (all react-spotify-api components must have a SpotifyApiContext.Provider parent)
 ```jsx static
-<SpotifyApiContext.Provider token={token}>
+<SpotifyApiContext.Provider value={token}>
     <App />
 </SpotifyApiContext.Provider>
 ```
