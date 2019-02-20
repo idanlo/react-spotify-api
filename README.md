@@ -16,25 +16,23 @@
 ## Install
 
 ```bash
-npm install --save react-spotify-api
+npm install react-spotify-api
+// or
+yarn add react-spotify-api
 ```
 
-## Wrapping your app with a Provider
-in order to use the Spotify API you are required to send an access token ([read more here](https://developer.spotify.com/documentation/general/guides/authorization-guide/))
-with every single http request, but the `SpotifyApiContext` provider does that for you!
-### Import
-```js static
-import { SpotifyApiContext } from 'react-spotify-api'
-```
-### Wrap your app with it (all react-spotify-api components must have a SpotifyApiContext.Provider parent)
+## `SpotifyApiContext`
+`Artist` and `useArtist` depends on the ContextProvider to access the Spotify API. [Generate a token](https://developer.spotify.com/documentation/general/guides/authorization-guide/) and wrap your app in the Provider using that token.
+
 ```jsx static
+import { SpotifyApiContext } from 'react-spotify-api'
+
 <SpotifyApiContext.Provider token={token}>
     <App />
 </SpotifyApiContext.Provider>
 ```
-You can now use all components without worrying about getting your access token! 
 
-## Component usage
+## `<Artist>`
 
 ```jsx
 import React, { Component } from 'react'
@@ -43,47 +41,46 @@ import { SpotifyApiContext, Artist } from 'react-spotify-api'
 
 function Example(props) {
     return (
-        <SpotifyApiContext.Provider value={props.token}>
-            <Artist id={props.id}>
-                {(artist, loading, error) =>
-                    artist ? (
-                        <div>
-                            <h1>{artist.name}</h1>
-                            <ul>
-                                {artist.genres.map(genre => (
-                                <li key={genre}>{genre}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    ) : null
-                }
-            </Artist>
-        </SpotifyApiContext.Provider> 
+        <Artist id={props.id}>
+            {(artist, loading, error) =>
+                artist ? (
+                    <div>
+                        <h1>{artist.name}</h1>
+                        <ul>
+                            {artist.genres.map(genre => (
+                            <li key={genre}>{genre}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ) : null
+            }
+        </Artist>
     )
     console.log()
 }
 ```
 
-## Hooks usage *(assuming the ExampleHooks component is wrapped with the SpotifyApiContext.Provider)*
+## `useArtist`
 ```jsx 
 import React from 'react'
-
 import { useArtist } from 'react-spotify-api'
 
 function ExampleHooks(props) {
     const {data, loading, error} = useArtist(props.id);
+    
+    if (!artist) {
+        return null
+    }
 
     return (
-        artist ? (
-            <div>
-                <h1>{artist.name}</h1>
-                <ul>
-                    {artist.genres.map(genre => (
-                        <li key={genre}>{genre}</li>
-                    ))}
-                </ul>
-            </div>
-        ) : null
+        <div>
+            <h1>{artist.name}</h1>
+            <ul>
+                {artist.genres.map(genre => (
+                    <li key={genre}>{genre}</li>
+                ))}
+            </ul>
+        </div>
     )
 }   
 ```
