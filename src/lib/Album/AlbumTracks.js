@@ -16,7 +16,7 @@ function AlbumTracks(props) {
 
     return (
         <ApiRequest url={url} options={options}>
-            {data => props.children(data)}
+            {(data, loading, error) => props.children(data, loading, error)}
         </ApiRequest>
     );
 }
