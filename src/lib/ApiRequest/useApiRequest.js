@@ -8,25 +8,24 @@ function useApiRequest(url, options = {}) {
     const [data, setData] = React.useState(null);
     const token = React.useContext(SpotifyApiContext);
 
-    React.useLayoutEffect(() => {
-        console.log('FETCHING...');
-        setLoading(true);
-        fetch(url + serialize(options), {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setData(data);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.log('[useApiRequest]', err);
-                setError(true);
+    React.useEffect(async () => {
+        try {
+            console.log('FETCHING...');
+            setLoading(true);
+            const res = await fetch(url + serialize(options), {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             });
+            const data = await res.json();
+            console.log(data);
+            setData(data);
+            setLoading(false);
+        } catch (e) {
+            console.log('[useApiRequest]', e);
+            setError(true);
+        }
     }, [url, options.ids]);
 
     return { data, loading, error };
