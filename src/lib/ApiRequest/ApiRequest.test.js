@@ -1,6 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import ApiRequest from './ApiRequest';
 
 describe('ApiRequest', () => {
@@ -8,10 +8,18 @@ describe('ApiRequest', () => {
         const mockDataPromise = Promise.resolve({
             test: 1
         });
-        const mockFetchPromise = Promise.resolve({
-            json: () => mockDataPromise
-        });
-        jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
+        const mockFetchPromise = url => {
+            // throw an error if the url isn't https://google.com for testing purposes
+            if (url !== 'https://google.com') {
+                return Promise.reject({ reason: 'wrong url' });
+            }
+            return Promise.resolve({
+                json: () => mockDataPromise
+            });
+        };
+        jest.spyOn(global, 'fetch').mockImplementation(url =>
+            mockFetchPromise(url)
+        );
     });
 
     afterEach(() => {
@@ -49,6 +57,24 @@ describe('ApiRequest', () => {
             });
 
             expect(fn).toHaveBeenLastCalledWith({ test: 1 }, false, false);
+            done();
+        });
+    });
+
+    it('calls props.children with the error parameter set to true when receiving Promise.reject with parameters (null, false, true)', done => {
+        let wrapper;
+        const fn = jest.fn(() => null);
+        act(() => {
+            wrapper = mount(
+                <ApiRequest url="https://googel.com" children={fn} />
+            );
+        });
+        process.nextTick(() => {
+            act(() => {
+                wrapper.update();
+            });
+
+            expect(fn).toHaveBeenLastCalledWith(null, false, true);
             done();
         });
     });
