@@ -31,7 +31,7 @@ Album.propTypes = {
     /** ID/s of the album/s */
     id: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string)
+        PropTypes.arrayOf(PropTypes.string.isRequired)
     ]).isRequired,
     /** Options object */
     options: PropTypes.shape({

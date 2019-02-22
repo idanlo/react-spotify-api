@@ -32,7 +32,7 @@ TrackFeatures.propTypes = {
     /** The id/s of the track/s */
     id: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string)
+        PropTypes.arrayOf(PropTypes.string.isRequired)
     ]).isRequired
 };
 

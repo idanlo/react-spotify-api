@@ -30,7 +30,7 @@ Artist.propTypes = {
     /** ID/s of the artist/s */
     id: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string)
+        PropTypes.arrayOf(PropTypes.string.isRequired)
     ]).isRequired,
     /** Process spotify data with render props using props.children as a function */
     children: PropTypes.func.isRequired
