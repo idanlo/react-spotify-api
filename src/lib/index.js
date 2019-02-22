@@ -23,7 +23,8 @@ import {
     UserTop,
     UserArtists,
     UserAlbums,
-    UserTracks
+    UserTracks,
+    useUser
 } from './User';
 import Search from './Search/Search';
 
@@ -59,7 +60,7 @@ export { User, UserPlaylists, UserTop, UserArtists, UserAlbums, UserTracks };
 export { Search };
 
 // Hooks
-export { useArtist, useTrack, useAlbum };
+export { useArtist, useTrack, useAlbum, useUser };
 
 // Context
 export { SpotifyApiContext };

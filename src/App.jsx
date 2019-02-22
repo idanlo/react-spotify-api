@@ -28,7 +28,8 @@ import {
     UserTop,
     UserTracks,
     UserPlaylists,
-    Search
+    Search,
+    useUser
 } from './lib';
 
 export function TestUseArtist() {
@@ -89,6 +90,20 @@ export function TestUseAlbum() {
                 <h1>{album.name}</h1>
             </div>
         ));
+    } else {
+        return null;
+    }
+}
+
+export function TestUseUser() {
+    const { data, loading, error } = useUser();
+
+    if (loading) {
+        return <h1>Loading...</h1>;
+    } else if (error) {
+        return <h1>Error</h1>;
+    } else if (data) {
+        return <h1>{data.birthdate}</h1>;
     } else {
         return null;
     }
