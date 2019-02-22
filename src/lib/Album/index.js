@@ -1,4 +1,5 @@
 import Album from './Album';
 import AlbumTracks from './AlbumTracks';
+import useAlbum from './useAlbum';
 
-export { Album, AlbumTracks };
+export { Album, AlbumTracks, useAlbum };

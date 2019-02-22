@@ -7,7 +7,7 @@ import {
     useArtist
 } from './Artist';
 import { Track, TrackFeatures, TrackAnalysis, useTrack } from './Track';
-import { Album, AlbumTracks } from './Album';
+import { Album, AlbumTracks, useAlbum } from './Album';
 import {
     BrowseFeatured,
     BrowseNew,
@@ -59,7 +59,7 @@ export { User, UserPlaylists, UserTop, UserArtists, UserAlbums, UserTracks };
 export { Search };
 
 // Hooks
-export { useArtist, useTrack };
+export { useArtist, useTrack, useAlbum };
 
 // Context
 export { SpotifyApiContext };

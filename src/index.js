@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App, { TestUseTrack, TestUseArtist } from './App';
+import App, { TestUseAlbum, TestUseArtist } from './App';
 import { SpotifyApiContext } from './lib';
 
 const app = (
-    <SpotifyApiContext.Provider value="BQCfoNoUjvssLIJfW0G7jTFE7rPBjI0FQ0FQcwP9dUEIX0N4tUmAGpKRLsVmAbVSh0oZl-6umveeUvRmfub-zODYovmMLCaL_u-AFjMSeXyMDk7g6FWgATdW2mDEucaAey5CmN-Tcu8t01A4l-R7Si6i5f7dTfTz436u4xRWCXObPA3e0B_C-q3JmZEpWO8tkBzA9QG7O2XyfsgrtrQnmW7A4EdaKmfsTxeT87W_nQbOlUCThwSoxxHKGOniFjkk1CToshcUYEAiFm5QnmtjWOD06TQdLxQa6PQ">
-        <TestUseTrack />
+    <SpotifyApiContext.Provider value="BQB4M6ktLC7rjabgGvgzva9kcaRhjqxo48_eD_zeFStYJQUScIbw_i9SJuWPG9y7W-MkwTKS4WLiAVs3KI-EZyfZxlT0-PyOs75ne8cGaVxJD3xCQJ4VRL1grpLmk0vCkCfkQtu2OELZD_1T5U-Dl-MV3KgRrGUhVKRrUVl7BIlBebClqE6TD3uPOEUYb7bHy5e-5Y5UVQlMLGmkw_Qsr8qiV703QoR1eczqEh0D1f34YnV8Ug7bymD04FO1FuodTBbyTTuL7bdMtEGBSDD6oBDX2QaQQuKgSkM">
+        <TestUseAlbum />
         <TestUseArtist />
         <App />
     </SpotifyApiContext.Provider>

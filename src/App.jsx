@@ -11,6 +11,7 @@ import {
     TrackFeatures,
     useTrack,
     Album,
+    useAlbum,
     AlbumTracks,
     Playlist,
     PlaylistImages,
@@ -40,11 +41,11 @@ export function TestUseArtist() {
     React.useEffect(() => {
         console.log(data);
     });
-    React.useEffect(() => {
-        setTimeout(() => {
-            setId(['5eAWCfyUhZtHHtBdNk56l1', '1XpDYCrUJnvCo9Ez6yeMWh']);
-        }, 1000);
-    }, []);
+    // React.useEffect(() => {
+    //     setTimeout(() => {
+    //         setId(['5eAWCfyUhZtHHtBdNk56l1', '1XpDYCrUJnvCo9Ez6yeMWh']);
+    //     }, 1000);
+    // }, []);
     if (loading) {
         return <h1>Loading...</h1>;
     } else if (error) {
@@ -63,29 +64,29 @@ export function TestUseArtist() {
     }
 }
 
-export function TestUseTrack() {
+export function TestUseAlbum() {
     const [id, setId] = React.useState([
-        '5qyJ5rKvb8TbNDNbuctVSg',
-        '6DPCSLA7hJlae1rsravTuY'
+        '4vxL3cLukzWtF16JD2eb2W',
+        '1AckkxSo39144vOBrJ1GkS'
     ]);
-    const { data, loading, error } = useTrack(id);
+    const { data, loading, error } = useAlbum(id);
 
     React.useEffect(() => {
         console.log(data);
     });
-    React.useEffect(() => {
-        setTimeout(() => {
-            setId(['6DPCSLA7hJlae1rsravTuY', '5qyJ5rKvb8TbNDNbuctVSg']);
-        }, 1000);
-    }, []);
+    // React.useEffect(() => {
+    //     setTimeout(() => {
+    //         setId(['1AckkxSo39144vOBrJ1GkS', '4vxL3cLukzWtF16JD2eb2W']);
+    //     }, 1000);
+    // }, []);
     if (loading) {
         return <h1>Loading...</h1>;
     } else if (error) {
         return <h1>Error</h1>;
     } else if (data) {
-        return data.tracks.map(track => (
-            <div key={track.id}>
-                <h1>{track.name}</h1>
+        return data.albums.map(album => (
+            <div key={album.id}>
+                <h1>{album.name}</h1>
             </div>
         ));
     } else {
