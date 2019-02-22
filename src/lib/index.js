@@ -26,7 +26,7 @@ import {
     UserTracks,
     useUser
 } from './User';
-import Search from './Search/Search';
+import { Search, useSearch } from './Search';
 
 // Context
 import SpotifyApiContext from './context';
@@ -56,11 +56,11 @@ export { Playlist, PlaylistTracks, PlaylistImages };
 // User components
 export { User, UserPlaylists, UserTop, UserArtists, UserAlbums, UserTracks };
 
-// all other (TODO:)
+// Search component
 export { Search };
 
 // Hooks
-export { useArtist, useTrack, useAlbum, useUser };
+export { useArtist, useTrack, useAlbum, useUser, useSearch };
 
 // Context
 export { SpotifyApiContext };

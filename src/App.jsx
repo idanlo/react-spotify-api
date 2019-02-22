@@ -10,6 +10,7 @@ import {
     TrackAnalysis,
     TrackFeatures,
     useTrack,
+    useSearch,
     Album,
     useAlbum,
     AlbumTracks,
@@ -104,6 +105,27 @@ export function TestUseUser() {
         return <h1>Error</h1>;
     } else if (data) {
         return <h1>{data.birthdate}</h1>;
+    } else {
+        return null;
+    }
+}
+
+export function TestUseSearch() {
+    const { data, loading, error } = useSearch('ed', {
+        artist: true,
+        limit: 5
+    });
+
+    if (loading) {
+        return <h1>Loading...</h1>;
+    } else if (error) {
+        return <h1>Error</h1>;
+    } else if (data) {
+        return data.artists.items.map(artist => (
+            <div key={artist.id}>
+                <h1>{artist.name}</h1>
+            </div>
+        ));
     } else {
         return null;
     }
