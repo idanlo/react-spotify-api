@@ -1,5 +1,9 @@
 import useApiRequest from '../ApiRequest/useApiRequest';
 
+/**
+ * @param {string} query - Search query keywords
+ * @param {Object} options - Options object
+ */
 function useSearch(query, options) {
     const url = 'https://api.spotify.com/v1/search';
     const type = [];
