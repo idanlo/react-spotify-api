@@ -14,7 +14,6 @@ function useApiRequest(url, options = {}) {
 
     async function loadData() {
         try {
-            console.log('FETCHING...');
             setLoading(true);
             const res = await fetch(url + serialize(options), {
                 method: 'GET',
@@ -27,7 +26,6 @@ function useApiRequest(url, options = {}) {
             setData(data);
             setLoading(false);
         } catch (e) {
-            console.log('[useApiRequest]', e);
             setLoading(false);
             setError(true);
         }
