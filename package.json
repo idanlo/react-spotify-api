@@ -52,6 +52,12 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "coverageDirectory": "./coverage",
-  "collectCoverage": true
+  "jest": {
+    "collectCoverageFrom": [
+        "src/lib/**/*.js",
+        "!node_modules/",
+        "!src/App.jsx",
+        "!src/index.js"
+      ]
+  }
 }
