@@ -19,6 +19,7 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@types/jest": "^24.0.6",
+    "codecov": "^3.2.0",
     "cross-env": "^5.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
@@ -39,7 +40,8 @@
     "eject": "react-scripts eject",
     "dist": "babel src/lib --out-dir dist --no-comments --ignore \"src/lib/**/*.test.js\" --config-file \"./.babelrc\"",
     "styleguide": "styleguidist server",
-    "styleguide-build": "styleguidist build"
+    "styleguide-build": "styleguidist build",
+    "cov": "codecov"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,5 +51,7 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "coverageDirectory": "./coverage",
+  "collectCoverage": true
 }
