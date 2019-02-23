@@ -22,7 +22,7 @@ describe('<Search />', () => {
         expect(wrapper.find('ApiRequest').prop('options').q).toEqual('jack');
     });
 
-    it('passes correct query type (inside options object) <ApiRequest />', () => {
+    it('passes correct query type (inside options object) - album & artist <ApiRequest />', () => {
         let wrapper;
         act(() => {
             wrapper = mount(
@@ -33,6 +33,20 @@ describe('<Search />', () => {
         });
         expect(wrapper.find('ApiRequest').prop('options').type).toEqual(
             'album,artist'
+        );
+    });
+
+    it('passes correct query type (inside options object) - playlist & track <ApiRequest />', () => {
+        let wrapper;
+        act(() => {
+            wrapper = mount(
+                <Search query="jack" playlist track>
+                    {() => null}
+                </Search>
+            );
+        });
+        expect(wrapper.find('ApiRequest').prop('options').type).toEqual(
+            'playlist,track'
         );
     });
 

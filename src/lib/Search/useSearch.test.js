@@ -7,7 +7,9 @@ import useSearch from './useSearch';
 const Comp = () => {
     const { data, loading, error } = useSearch('jack', {
         album: true,
-        artist: true
+        artist: true,
+        playlist: true,
+        track: true
     });
 
     if (data) return <h1>data</h1>;
@@ -61,7 +63,7 @@ describe('useSearch using global.fetch jest mock', () => {
         // %2C is the encoding for the comma (,) character
         // the album=true&artist=true needs to be fixed but causes no errors for now
         expect(global.fetch).toHaveBeenCalledWith(
-            'https://api.spotify.com/v1/search?q=jack&type=album%2Cartist&album=true&artist=true',
+            'https://api.spotify.com/v1/search?q=jack&type=album%2Cartist%2Cplaylist%2Ctrack&album=true&artist=true&playlist=true&track=true',
             expect.anything()
         );
     });
