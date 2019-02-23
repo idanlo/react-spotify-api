@@ -1,0 +1,3 @@
+ignore:
+  src/App.jsx
+  src/index.js
