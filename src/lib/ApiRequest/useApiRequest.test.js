@@ -19,29 +19,7 @@ const Wrapper = ({ url }) => (
     </SpotifyApiContext.Provider>
 );
 
-describe('useApiRequest using the <Comp /> helper', () => {
-    beforeEach(() => {
-        const mockDataPromise = Promise.resolve({
-            test: 1
-        });
-        const mockFetchPromise = url => {
-            // throw an error if the url isn't https://google.com for testing purposes
-            if (url !== 'https://google.com') {
-                return Promise.reject({ reason: 'wrong url' });
-            }
-            return Promise.resolve({
-                json: () => mockDataPromise
-            });
-        };
-        jest.spyOn(global, 'fetch').mockImplementation(url =>
-            mockFetchPromise(url)
-        );
-    });
-
-    afterEach(() => {
-        global.fetch.mockClear();
-    });
-
+describe('useApiRequest using a component to show hook state', () => {
     it('sets loading state property to true on mount', () => {
         let wrapper;
         act(() => {
@@ -68,7 +46,7 @@ describe('useApiRequest using the <Comp /> helper', () => {
         let wrapper;
         act(() => {
             // this is the wrong url, which should throw an error according to the mock in line 27
-            wrapper = mount(<Wrapper url="https://googel.com" />);
+            wrapper = mount(<Wrapper url="" />);
         });
         process.nextTick(() => {
             act(() => {
@@ -80,21 +58,7 @@ describe('useApiRequest using the <Comp /> helper', () => {
     });
 });
 
-describe('useApiRequest using global.fetch mock', () => {
-    beforeEach(() => {
-        const mockDataPromise = Promise.resolve({
-            test: 1
-        });
-        const mockFetchPromise = Promise.resolve({
-            json: () => mockDataPromise
-        });
-        jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
-    });
-
-    afterEach(() => {
-        global.fetch.mockClear();
-    });
-
+describe('useApiRequest using global.fetch jest mock', () => {
     it('calls fetch only one time', () => {
         act(() => {
             mount(<Wrapper url="https://google.com" />);

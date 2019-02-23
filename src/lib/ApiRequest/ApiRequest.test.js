@@ -4,27 +4,6 @@ import { mount } from 'enzyme';
 import ApiRequest from './ApiRequest';
 
 describe('ApiRequest', () => {
-    beforeEach(() => {
-        const mockDataPromise = Promise.resolve({
-            test: 1
-        });
-        const mockFetchPromise = url => {
-            // throw an error if the url isn't https://google.com for testing purposes
-            if (url !== 'https://google.com') {
-                return Promise.reject({ reason: 'wrong url' });
-            }
-            return Promise.resolve({
-                json: () => mockDataPromise
-            });
-        };
-        jest.spyOn(global, 'fetch').mockImplementation(url =>
-            mockFetchPromise(url)
-        );
-    });
-
-    afterEach(() => {
-        global.fetch.mockClear();
-    });
     it('calls props.children initially with parameters (null, false, false)', () => {
         const fn = jest.fn(() => null);
         act(() => {
@@ -56,7 +35,11 @@ describe('ApiRequest', () => {
                 wrapper.update();
             });
 
-            expect(fn).toHaveBeenLastCalledWith({ test: 1 }, false, false);
+            expect(fn).toHaveBeenLastCalledWith(
+                { url: 'https://google.com' },
+                false,
+                false
+            );
             done();
         });
     });
@@ -65,9 +48,7 @@ describe('ApiRequest', () => {
         let wrapper;
         const fn = jest.fn(() => null);
         act(() => {
-            wrapper = mount(
-                <ApiRequest url="https://googel.com" children={fn} />
-            );
+            wrapper = mount(<ApiRequest url="" children={fn} />);
         });
         process.nextTick(() => {
             act(() => {
