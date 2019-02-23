@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ApiRequest from '../ApiRequest/ApiRequest';
 
-const BASE_URL = 'https://api.spotify.com/v1/albums';
-
 /**
  * Get Spotify catalog information about an album’s tracks.<br/>
  * Optional parameters can be used to limit the number of tracks returned.<br/>
@@ -11,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1/albums';
  * @example ../../docs/Album/AlbumTracks.md
  */
 function AlbumTracks(props) {
-    let url = BASE_URL + `/${props.id}/tracks`;
+    let url = `https://api.spotify.com/v1/albums/${props.id}/tracks`;
     let options = { ...props.options };
 
     return (

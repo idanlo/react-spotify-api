@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ApiRequest from '../ApiRequest/ApiRequest';
 
-const BASE_URL = 'https://api.spotify.com/v1/albums';
-
 /**
  * Get Spotify catalog information for single/multiple album/s identified by their Spotify ID/s.<br/>
  * There are no optional parameters for this type<br/>
@@ -12,7 +10,7 @@ const BASE_URL = 'https://api.spotify.com/v1/albums';
  * @example ../../docs/Album/Album.md
  */
 function Album(props) {
-    let url = BASE_URL;
+    let url = 'https://api.spotify.com/v1/albums';
     let options = { ...props.options };
     if (Array.isArray(props.id)) {
         options.ids = props.id.join(',');
