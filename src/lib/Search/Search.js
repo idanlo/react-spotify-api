@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ApiRequest from '../ApiRequest/ApiRequest';
 
-const BASE_URL = 'https://api.spotify.com/v1/search';
-
 /**
  * Get Spotify Catalog information about artists, albums, tracks or playlists that match a keyword string.<br/>
  * [Writing a query - guidelines](https://developer.spotify.com/documentation/web-api/reference/search/search/#writing-a-query---guidelines)<br/>
@@ -11,9 +9,9 @@ const BASE_URL = 'https://api.spotify.com/v1/search';
  * @example ../../docs/Search/Search.md
  */
 function Search(props) {
-    let url = BASE_URL;
-    let options = { ...props.options };
-    let type = [];
+    const url = 'https://api.spotify.com/v1/search';
+    const options = { ...props.options };
+    const type = [];
     if (props.album) type.push('album');
     if (props.artist) type.push('artist');
     if (props.playlist) type.push('playlist');
