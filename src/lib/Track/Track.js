@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ApiRequest from '../ApiRequest/ApiRequest';
 
-const BASE_URL = 'https://api.spotify.com/v1/tracks';
-
 /**
  * Get Spotify catalog information for single/multiple track/s identified by their unique Spotify ID/s.<br/>
  * Optional parameter - market, if you don't want to specify you can set to 'from_token'<br/>
@@ -12,7 +10,7 @@ const BASE_URL = 'https://api.spotify.com/v1/tracks';
  * @example ../../docs/Track/Track.md
  */
 function Track(props) {
-    let url = BASE_URL;
+    let url = 'https://api.spotify.com/v1/tracks';
     let options = { ...props.options };
     if (Array.isArray(props.id)) {
         options.ids = props.id.join(',');
