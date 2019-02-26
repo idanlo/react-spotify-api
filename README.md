@@ -14,10 +14,25 @@
 
 # [Documentation](https://idanlo.github.io/react-spotify-api/)
 
-## Install
+# Features
+* Components for most of Spotify's data types that pass data through render props
+* Hooks for most of Spotify's data
 
+# Roadmap
+- [x] Pass Spotify data with render props
+- [x] Use React.Context to pass the access token down the component tree
+- [x] Hooks!
+- [] A demo page that uses this library
+- [] Hooks for all data types from Spotify's API
+- [] Hooks for using the [Spotify Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/)
+# Installing
+## with npm
 ```bash
 npm install --save react-spotify-api
+```
+## with yarn
+```bash
+yarn add react-spotify-api
 ```
 
 ## Wrapping your app with a Provider
@@ -61,7 +76,6 @@ function Example(props) {
             </Artist>
         </SpotifyApiContext.Provider> 
     )
-    console.log()
 }
 ```
 
@@ -89,5 +103,6 @@ function ExampleHooks(props) {
 }   
 ```
 ## License
+This project is licensed under the MIT License - see the LICENSE file for details
 
 MIT © [idanlo](https://github.com/idanlo)
