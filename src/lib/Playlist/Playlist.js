@@ -2,15 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ApiRequest from '../ApiRequest/ApiRequest';
 
-const BASE_URL = 'https://api.spotify.com/v1/playlists';
-
 /**
  * Get a playlist owned by a Spotify user.<br/>
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/playlists/get-playlist/#response-format)
  * @example ../../docs/Playlist/Playlist.md
  */
 function Playlist(props) {
-    let url = BASE_URL + `/${props.id}`;
+    let url = `https://api.spotify.com/v1/playlists/${props.id}`;
     let options = { ...props.options };
 
     return (

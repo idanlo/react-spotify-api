@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ApiRequest from '../ApiRequest/ApiRequest';
 
-const BASE_URL = 'https://api.spotify.com/v1/playlists';
-
 /**
  * Get the current image associated with a specific playlist.<br/>
  * There are no optional parameters for this type<br/>
@@ -11,7 +9,7 @@ const BASE_URL = 'https://api.spotify.com/v1/playlists';
  * @example ../../docs/Playlist/PlaylistImages.md
  */
 function PlaylistImages(props) {
-    let url = BASE_URL + `/${props.id}/images`;
+    let url = `https://api.spotify.com/v1/playlists/${props.id}/images`;
     // no options for this endpoint
 
     return (
