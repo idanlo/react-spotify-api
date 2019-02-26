@@ -1,6 +1,6 @@
 {
   "name": "react-spotify-api",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/idanlo/react-spotify-api.git"
@@ -54,10 +54,10 @@
   ],
   "jest": {
     "collectCoverageFrom": [
-        "src/lib/**/*.js",
-        "!node_modules/",
-        "!src/App.jsx",
-        "!src/index.js"
-      ]
+      "src/lib/**/*.js",
+      "!node_modules/",
+      "!src/App.jsx",
+      "!src/index.js"
+    ]
   }
 }
