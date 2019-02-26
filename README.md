@@ -1,6 +1,6 @@
 ﻿# react-spotify-api
 
-> This is a component library that helps you interact with the Spotify API
+A component library that helps you interact with the Spotify API
 
 [![NPM](https://img.shields.io/npm/v/react-spotify-api.svg)](https://www.npmjs.com/package/react-spotify-api)
 [![Build Status](https://travis-ci.com/idanlo/react-spotify-api.svg?branch=master)](https://travis-ci.com/idanlo/react-spotify-api)
@@ -22,9 +22,12 @@
 - [x] Pass Spotify data with render props
 - [x] Use React.Context to pass the access token down the component tree
 - [x] Hooks!
-- [] A demo page that uses this library
-- [] Hooks for all data types from Spotify's API
-- [] Hooks for using the [Spotify Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/)
+- [ ] A demo page that uses this library
+- [ ] TypeScript support!
+- [ ] 100% code coverage
+- [ ] Hooks for all data types from Spotify's API
+- [ ] Hooks for using the [Spotify Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk)
+
 # Installing
 ## with npm
 ```bash
