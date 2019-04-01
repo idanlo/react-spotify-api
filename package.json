@@ -1,6 +1,16 @@
 {
   "name": "react-spotify-api",
   "version": "1.5.1",
+  "keywords": [
+      "spotify",
+      "spotify-api",
+      "react",
+      "react-spotify",
+      "react-spotify-api",
+      "spotify-web-api",
+      "react-spotify-web-api",
+      "spotify-web-api-js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/idanlo/react-spotify-api.git"
