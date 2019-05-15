@@ -39,6 +39,9 @@
     "react-scripts": "^2.1.5",
     "react-styleguidist": "^8.0.6"
   },
+	"dependencies": {
+		"@babel/runtime": "^7.4.4"
+  },
   "peerDependencies": {
     "prop-types": "*",
     "react": ">=16.8.1",
