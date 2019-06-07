@@ -13,7 +13,6 @@ function useSearch(query, options) {
   if (options.track) type.push('track');
   const optionsObj = { q: query, type: type.join(','), ...options };
   const { data, loading, error } = useApiRequest(url, optionsObj);
-  console.log('[useSearch]', query, options);
 
   return { data, loading, error };
 }

@@ -18,7 +18,6 @@ function Search(props) {
   if (props.track) type.push('track');
   options.type = type.join(',');
   options.q = props.query;
-  console.log('[Search]', props);
 
   return (
     <ApiRequest url={url} options={options}>

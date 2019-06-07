@@ -9,7 +9,6 @@ function useApiRequest(url, options = {}) {
   const token = React.useContext(SpotifyApiContext);
 
   React.useEffect(() => {
-    console.log('[useApiRequest]', url, options);
     async function loadData() {
       try {
         setLoading(true);
@@ -20,7 +19,6 @@ function useApiRequest(url, options = {}) {
           }
         });
         const data = await res.json();
-        console.log(data);
         setData(data);
         setLoading(false);
       } catch (e) {
