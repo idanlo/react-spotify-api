@@ -9,6 +9,7 @@ function useApiRequest(url, options = {}) {
   const token = React.useContext(SpotifyApiContext);
 
   React.useEffect(() => {
+    console.log('[useApiRequest]', url, options);
     async function loadData() {
       try {
         setLoading(true);
@@ -29,7 +30,8 @@ function useApiRequest(url, options = {}) {
     }
 
     loadData();
-  }, [url, options.ids, options.q, options, token]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url, options.ids, options.q, token]);
 
   return { data, loading, error };
 }
