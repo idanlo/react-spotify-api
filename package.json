@@ -32,7 +32,7 @@
     "@types/jest": "^24.0.13",
     "codecov": "^3.2.0",
     "cross-env": "^5.2.0",
-    "enzyme": "^3.9.0",
+    "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
