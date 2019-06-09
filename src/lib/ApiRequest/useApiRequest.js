@@ -24,10 +24,12 @@ function useApiRequest(url, options = {}) {
           setError(data.error);
         } else {
           setData(data);
+          setError(null);
         }
       } catch (e) {
         setLoading(false);
         setError(e);
+        setData(null);
       }
     }
 
