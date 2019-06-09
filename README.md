@@ -18,19 +18,19 @@ A component library that helps you interact with the Spotify API
 
 # Features
 
--   Components for most of Spotify's data types that pass data through render props
--   Hooks for most of Spotify's data
+- Components for most of Spotify's data types that pass data through render props
+- Hooks for most of Spotify's data
 
 # Roadmap
 
--   [x] Pass Spotify data with render props
--   [x] Use React.Context to pass the access token down the component tree
--   [x] Hooks!
--   [x] A demo page that uses this library - [available here!](https://react-spotify.netlify.com/browse/featured)
--   [ ] TypeScript support!
--   [ ] 100% code coverage
--   [ ] Hooks for all data types from Spotify's API
--   [ ] Hooks for using the [Spotify Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk)
+- [x] Pass Spotify data with render props
+- [x] Use React.Context to pass the access token down the component tree
+- [x] Hooks!
+- [x] A demo page that uses this library - [available here!](https://react-spotify.netlify.com/browse/featured)
+- [ ] TypeScript support!
+- [ ] 100% code coverage
+- [ ] Hooks for all data types from Spotify's API
+- [ ] Hooks for using the [Spotify Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk)
 
 # Installing
 
@@ -61,7 +61,7 @@ import { SpotifyApiContext } from 'react-spotify-api';
 
 ```jsx static
 <SpotifyApiContext.Provider value={token}>
-    <App />
+  <App />
 </SpotifyApiContext.Provider>
 ```
 
@@ -75,24 +75,24 @@ import React, { Component } from 'react';
 import { SpotifyApiContext, Artist } from 'react-spotify-api';
 
 function Example(props) {
-    return (
-        <SpotifyApiContext.Provider value={props.token}>
-            <Artist id={props.id}>
-                {(artist, loading, error) =>
-                    artist ? (
-                        <div>
-                            <h1>{artist.name}</h1>
-                            <ul>
-                                {artist.genres.map(genre => (
-                                    <li key={genre}>{genre}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    ) : null
-                }
-            </Artist>
-        </SpotifyApiContext.Provider>
-    );
+  return (
+    <SpotifyApiContext.Provider value={props.token}>
+      <Artist id={props.id}>
+        {(artist, loading, error) =>
+          artist ? (
+            <div>
+              <h1>{artist.name}</h1>
+              <ul>
+                {artist.genres.map(genre => (
+                  <li key={genre}>{genre}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null
+        }
+      </Artist>
+    </SpotifyApiContext.Provider>
+  );
 }
 ```
 
@@ -104,20 +104,26 @@ import React from 'react';
 import { useArtist } from 'react-spotify-api';
 
 function ExampleHooks(props) {
-    const { data, loading, error } = useArtist(props.id);
+  const { data, loading, error } = useArtist(props.id);
 
-    return artist ? (
-        <div>
-            <h1>{artist.name}</h1>
-            <ul>
-                {artist.genres.map(genre => (
-                    <li key={genre}>{genre}</li>
-                ))}
-            </ul>
-        </div>
-    ) : null;
+  return artist ? (
+    <div>
+      <h1>{artist.name}</h1>
+      <ul>
+        {artist.genres.map(genre => (
+          <li key={genre}>{genre}</li>
+        ))}
+      </ul>
+    </div>
+  ) : null;
 }
 ```
+
+## Data types
+
+- data - Each component has a link to the Spotify API endpoint where you can see the data model for that specific data type
+- loading - Boolean (_true_ when loading and _false_ when finished loading)
+- error - _null_ when there are no errors but an _object_ when there are - usually containing the error object received by the `fetch` api, so it looks something like: `{status: 404, message: "Not Found"}`
 
 ## License
 
