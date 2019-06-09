@@ -45,8 +45,38 @@ describe('useApiRequest using a component to show hook state', () => {
     it('sets error state property when an error occurs', done => {
         let wrapper;
         act(() => {
-            // this is the wrong url, which should throw an error according to the mock in line 27
+            // this url will throw an error as configured in setupTests.js fetch mock
             wrapper = mount(<Wrapper url="" />);
+        });
+        process.nextTick(() => {
+            act(() => {
+                wrapper.update();
+            });
+            expect(wrapper.find('h1').text()).toEqual('error');
+            done();
+        });
+    });
+
+    it('sets error state property when api error data is received', done => {
+        let wrapper;
+        act(() => {
+            // this url will result in json error response as configured in setupTests.js fetch mock
+            wrapper = mount(<Wrapper url="api.error" />);
+        });
+        process.nextTick(() => {
+            act(() => {
+                wrapper.update();
+            });
+            expect(wrapper.find('h1').text()).toEqual('error');
+            done();
+        });
+    });
+
+    it('sets error state property when a not ok response is received', done => {
+        let wrapper;
+        act(() => {
+            // this url will result in a not ok response as configured in setupTests.js fetch mock
+            wrapper = mount(<Wrapper url="api.not.ok" />);
         });
         process.nextTick(() => {
             act(() => {
