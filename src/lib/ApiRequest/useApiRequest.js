@@ -4,7 +4,7 @@ import { SpotifyApiContext } from '../';
 
 function useApiRequest(url, options = {}) {
   const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(false);
+  const [error, setError] = React.useState(null);
   const [data, setData] = React.useState(null);
   const token = React.useContext(SpotifyApiContext);
 
@@ -21,13 +21,13 @@ function useApiRequest(url, options = {}) {
         const data = await res.json();
         setLoading(false);
         if (data.error) {
-          setError(true);
+          setError(data.error);
         } else {
           setData(data);
         }
       } catch (e) {
         setLoading(false);
-        setError(true);
+        setError(e);
       }
     }
 
