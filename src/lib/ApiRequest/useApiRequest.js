@@ -19,8 +19,12 @@ function useApiRequest(url, options = {}) {
           }
         });
         const data = await res.json();
-        setData(data);
         setLoading(false);
+        if (data.error) {
+          setError(true);
+        } else {
+          setData(data);
+        }
       } catch (e) {
         setLoading(false);
         setError(true);
