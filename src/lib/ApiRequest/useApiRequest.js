@@ -22,6 +22,8 @@ function useApiRequest(url, options = {}) {
         setLoading(false);
         if (data.error) {
           setError(data.error);
+        } else if (!res.ok) {
+          setError({ status: res.status, message: res.statusText });
         } else {
           setData(data);
           setError(null);
