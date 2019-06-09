@@ -21,7 +21,8 @@ global.beforeEach(() => {
             })
         } else if (url === 'api.not.ok') {
             return Promise.resolve({
-                ok: false
+                ok: false,
+                status: 401
             })
         }
         return Promise.resolve({
