@@ -1,7 +1,9 @@
 {
-  "build/0.843992c3.js": "/build/0.843992c3.js",
-  "build/1.4e2ca593.js": "/build/1.4e2ca593.js",
-  "main.js": "/build/main.83d3ceef.js",
-  "runtime~main.js": "/build/bundle.7a2d17ce.js",
-  "index.html": "/index.html"
+  "files": {
+    "build/0.9d82727f.js": "/build/0.9d82727f.js",
+    "build/1.b7d44c2c.js": "/build/1.b7d44c2c.js",
+    "main.js": "/build/main.719d55f8.js",
+    "runtime~main.js": "/build/bundle.41457103.js",
+    "index.html": "/index.html"
+  }
 }
