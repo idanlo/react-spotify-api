@@ -47,7 +47,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --no-watch",
+    "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "dist": "babel src/lib --out-dir dist --no-comments --ignore \"src/lib/**/*.test.js\" --config-file \"./.babelrc\"",
     "styleguide": "styleguidist server",
