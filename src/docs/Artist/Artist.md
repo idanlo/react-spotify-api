@@ -7,7 +7,7 @@ import { Artist } from 'react-spotify-api'
 ```jsx static
 <Artist id="1XpDYCrUJnvCo9Ez6yeMWh">
     {(artist, loading, error) => (
-        artist ? <h1>{artist.name} : null
+        artist ? <h1>{artist.name}</h1> : null
     )}
 </Artist>
 ```
