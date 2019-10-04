@@ -35,7 +35,7 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.10.2",
     "react-scripts": "^3.0.1",
     "react-styleguidist": "^8.0.6"
   },
