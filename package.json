@@ -15,6 +15,10 @@
     "type": "git",
     "url": "https://github.com/idanlo/react-spotify-api.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
