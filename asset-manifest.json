@@ -1,9 +1,13 @@
 {
   "files": {
-    "build/0.9d82727f.js": "/build/0.9d82727f.js",
-    "build/1.b7d44c2c.js": "/build/1.b7d44c2c.js",
-    "main.js": "/build/main.719d55f8.js",
-    "runtime~main.js": "/build/bundle.41457103.js",
+    "build/0.61b56bca.js": "/build/0.61b56bca.js",
+    "main.js": "/build/main.5fff4493.js",
+    "runtime-main.js": "/build/bundle.105de5e2.js",
     "index.html": "/index.html"
-  }
+  },
+  "entrypoints": [
+    "build/bundle.105de5e2.js",
+    "build/0.61b56bca.js",
+    "build/main.5fff4493.js"
+  ]
 }
