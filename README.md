@@ -27,10 +27,35 @@ A component library that helps you interact with the Spotify API
 - [x] Use React.Context to pass the access token down the component tree
 - [x] Hooks!
 - [x] A demo page that uses this library - [available here!](https://react-spotify.netlify.com/browse/featured)
+- [x] Load more data support (infinite scrolling) - current works for some of the data types
 - [ ] TypeScript support!
 - [ ] 100% code coverage
 - [ ] Hooks for all data types from Spotify's API
 - [ ] Hooks for using the [Spotify Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk)
+
+# Version 3.0.0 Breaking Change
+
+Before version 3.0.0 the parameters to `props.children` were passed in this order - `data, loading, error`. It is now passed as an object, so you would now use the `Album` component like this -
+
+```jsx static
+<Album id={...}>
+  {({ data }) => {
+    return <></>;
+  }}
+</Album>
+```
+
+As opposed to the previous versions where you would use the components like this -
+
+```jsx static
+<Album id={...}>
+  {(data, loading, error) => {
+    return <></>;
+  }}
+</Album>
+```
+
+This way you can choose which parameters you would like to have, and if you want just the error parameter you can omit the other two. This works well with the `loadMoreData` parameter, you don't need to write all 4 parameters if you just need some of them.
 
 # Installing
 
@@ -78,12 +103,12 @@ function Example(props) {
   return (
     <SpotifyApiContext.Provider value={props.token}>
       <Artist id={props.id}>
-        {(artist, loading, error) =>
-          artist ? (
+        {({ data, loading, error }) =>
+          data ? (
             <div>
-              <h1>{artist.name}</h1>
+              <h1>{data.name}</h1>
               <ul>
-                {artist.genres.map(genre => (
+                {data.genres.map(genre => (
                   <li key={genre}>{genre}</li>
                 ))}
               </ul>
