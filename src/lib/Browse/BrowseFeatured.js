@@ -10,27 +10,27 @@ const BASE_URL = 'https://api.spotify.com/v1/browse';
  * @example ../../docs/Browse/BrowseFeatured.md
  */
 function BrowseFeatured(props) {
-    let url = BASE_URL + `/featured-playlists`;
-    let options = { ...props.options };
+  let url = BASE_URL + `/featured-playlists`;
+  let options = { ...props.options };
 
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 
 BrowseFeatured.propTypes = {
-    /** Options object */
-    options: PropTypes.shape({
-        locale: PropTypes.string,
-        country: PropTypes.string,
-        timestamp: PropTypes.string,
-        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    }),
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** Options object */
+  options: PropTypes.shape({
+    locale: PropTypes.string,
+    country: PropTypes.string,
+    timestamp: PropTypes.string,
+    limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 export default BrowseFeatured;

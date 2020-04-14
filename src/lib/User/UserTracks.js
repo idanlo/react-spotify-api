@@ -10,29 +10,29 @@ const BASE_URL = 'https://api.spotify.com/v1/me/tracks';
  * @example ../../docs/User/UserTracks.md
  */
 function UserTracks(props) {
-    let url = BASE_URL;
-    let options = { ...props.options };
+  let url = BASE_URL;
+  let options = { ...props.options };
 
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 
 UserTracks.propTypes = {
-    /** Options object */
-    options: PropTypes.shape({
-        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        market: PropTypes.string
-    }),
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** Options object */
+  options: PropTypes.shape({
+    limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    market: PropTypes.string,
+  }),
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 UserTracks.defaultProps = {
-    options: {}
+  options: {},
 };
 
 export default UserTracks;

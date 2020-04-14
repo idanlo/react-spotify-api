@@ -10,21 +10,21 @@ const BASE_URL = 'https://api.spotify.com/v1/artists';
  * [Response format](https://developer.spotify.com/documentation/web-api/reference/artists/get-related-artists/#response-format)
  */
 function ArtistRelated(props) {
-    let url = BASE_URL + `/${props.id}/related-artists`;
-    let options = {};
+  let url = BASE_URL + `/${props.id}/related-artists`;
+  let options = {};
 
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 
 ArtistRelated.propTypes = {
-    /** Id of the artist */
-    id: PropTypes.string.isRequired,
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** Id of the artist */
+  id: PropTypes.string.isRequired,
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 export default ArtistRelated;

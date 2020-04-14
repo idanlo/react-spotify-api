@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { serialize } from '../utils';
 import { SpotifyApiContext, SpotifyApiAxiosContext } from '../';
@@ -9,50 +10,90 @@ function useApiRequest(url, options = {}) {
   const token = React.useContext(SpotifyApiContext);
   const axios = React.useContext(SpotifyApiAxiosContext);
 
+  const loadData = React.useCallback(async () => {
+    try {
+      setLoading(true);
+      let res = null;
+      let resData = null;
+      if (axios) {
+        res = await axios.get(url + serialize(options), {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        resData = res.data;
+      } else {
+        const res = await fetch(url + serialize(options), {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        resData = await res.json();
+      }
+      setLoading(false);
+
+      if (resData.error) {
+        setError(resData.error);
+      } else if (res.status !== 200) {
+        setError({ status: res.status, message: res.statusText });
+      } else {
+        setData(resData);
+        setError(null);
+      }
+    } catch (e) {
+      setLoading(false);
+      setError(e);
+      setData(null);
+    }
+  }, [axios, options.ids, options.q, token, url]);
+
   React.useEffect(() => {
-    async function loadData() {
-      try {
+    loadData();
+  }, [url, options.ids, options.q, token, loadData]);
+
+  const loadMoreData = React.useCallback(async () => {
+    try {
+      if (data && data.next && data.items) {
         setLoading(true);
         let res = null;
-        let data = null;
+        let resData = null;
+        const { limit, offset, ...wantedOpts } = options;
         if (axios) {
-          res = await axios.get(url + serialize(options), {
+          res = await axios.get(data.next + serialize(wantedOpts, true), {
             headers: {
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           });
-          data = res.data;
+          resData = res.data;
         } else {
-          const res = await fetch(url + serialize(options), {
+          const res = await fetch(data.next + serialize(wantedOpts, true), {
             method: 'GET',
             headers: {
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           });
-          data = await res.json();
+          resData = await res.json();
         }
         setLoading(false);
 
-        if (data.error) {
-          setError(data.error);
+        if (resData.error) {
+          setError(resData.error);
         } else if (res.status !== 200) {
           setError({ status: res.status, message: res.statusText });
         } else {
-          setData(data);
+          setData({ ...resData, items: data.items.concat(resData.items) });
           setError(null);
         }
-      } catch (e) {
-        setLoading(false);
-        setError(e);
-        setData(null);
       }
+    } catch (e) {
+      setLoading(false);
+      setError(e);
+      setData(null);
     }
+  }, [axios, options.ids, options.q, url, token, data]);
 
-    loadData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url, options.ids, options.q, token]);
-
-  return { data, loading, error };
+  return { data, loading, error, loadMoreData };
 }
 
 export default useApiRequest;

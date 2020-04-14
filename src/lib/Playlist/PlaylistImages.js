@@ -9,21 +9,17 @@ import ApiRequest from '../ApiRequest/ApiRequest';
  * @example ../../docs/Playlist/PlaylistImages.md
  */
 function PlaylistImages(props) {
-    let url = `https://api.spotify.com/v1/playlists/${props.id}/images`;
-    // no options for this endpoint
+  let url = `https://api.spotify.com/v1/playlists/${props.id}/images`;
+  // no options for this endpoint
 
-    return (
-        <ApiRequest url={url}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return <ApiRequest url={url}>{props.children}</ApiRequest>;
 }
 
 PlaylistImages.propTypes = {
-    /** The Spotify ID for the playlist. */
-    id: PropTypes.string.isRequired,
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** The Spotify ID for the playlist. */
+  id: PropTypes.string.isRequired,
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 export default PlaylistImages;

@@ -9,20 +9,16 @@ import ApiRequest from '../ApiRequest/ApiRequest';
  * @example ../../docs/Track/TrackAnalysis.md
  */
 function TrackAnalysis(props) {
-    let url = `https://api.spotify.com/v1/audio-analysis/${props.id}`;
+  let url = `https://api.spotify.com/v1/audio-analysis/${props.id}`;
 
-    return (
-        <ApiRequest url={url}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return <ApiRequest url={url}>{props.children}</ApiRequest>;
 }
 
 TrackAnalysis.propTypes = {
-    /** The id of the track */
-    id: PropTypes.string.isRequired,
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** The id of the track */
+  id: PropTypes.string.isRequired,
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 export default TrackAnalysis;

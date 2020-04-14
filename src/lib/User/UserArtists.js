@@ -10,28 +10,28 @@ const BASE_URL = 'https://api.spotify.com/v1/me/following';
  * @example ../../docs/User/UserArtists.md
  */
 function UserArtists(props) {
-    let url = BASE_URL;
-    let options = { ...props.options, type: 'artist' };
+  let url = BASE_URL;
+  let options = { ...props.options, type: 'artist' };
 
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 
 UserArtists.propTypes = {
-    /** Options object */
-    options: PropTypes.shape({
-        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        after: PropTypes.string
-    }),
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** Options object */
+  options: PropTypes.shape({
+    limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    after: PropTypes.string,
+  }),
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 UserArtists.defaultProps = {
-    options: {}
+  options: {},
 };
 
 export default UserArtists;

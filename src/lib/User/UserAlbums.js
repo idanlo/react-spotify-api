@@ -10,28 +10,28 @@ const BASE_URL = 'https://api.spotify.com/v1/me/albums';
  * @example ../../docs/User/UserAlbums.md
  */
 function UserAlbums(props) {
-    let url = BASE_URL;
-    let options = { ...props.options };
+  let url = BASE_URL;
+  let options = { ...props.options };
 
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 UserAlbums.propTypes = {
-    /** Options object */
-    options: PropTypes.shape({
-        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        market: PropTypes.string
-    }),
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** Options object */
+  options: PropTypes.shape({
+    limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    market: PropTypes.string,
+  }),
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 UserAlbums.defaultProps = {
-    options: {}
+  options: {},
 };
 
 export default UserAlbums;

@@ -10,27 +10,27 @@ const BASE_URL = 'https://api.spotify.com/v1/browse/categories';
  * @example ../../docs/Browse/BrowseCategoryPlaylists.md
  */
 function BrowseCategoryPlaylists(props) {
-    let url = BASE_URL + `/${props.id}/playlists`;
-    let options = { ...props.options };
+  let url = BASE_URL + `/${props.id}/playlists`;
+  let options = { ...props.options };
 
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 
 BrowseCategoryPlaylists.propTypes = {
-    /** The Spotify category ID for the category. */
-    id: PropTypes.string.isRequired,
-    /** Options object */
-    options: PropTypes.shape({
-        country: PropTypes.string,
-        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    }),
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** The Spotify category ID for the category. */
+  id: PropTypes.string.isRequired,
+  /** Options object */
+  options: PropTypes.shape({
+    country: PropTypes.string,
+    limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 export default BrowseCategoryPlaylists;

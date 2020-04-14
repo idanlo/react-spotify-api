@@ -21,9 +21,7 @@ function Search(props) {
 
   return (
     <ApiRequest url={url} options={options}>
-      {(data, loading, error) => {
-        return props.children(data, loading, error);
-      }}
+      {props.children}
     </ApiRequest>
   );
 }
@@ -44,14 +42,14 @@ Search.propTypes = {
     market: PropTypes.string,
     limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    include_external: PropTypes.string
+    include_external: PropTypes.string,
   }),
   /** Process spotify data with render props using props.children as a function */
-  children: PropTypes.func.isRequired
+  children: PropTypes.func.isRequired,
 };
 
 Search.defaultProps = {
-  options: {}
+  options: {},
 };
 
 export default Search;

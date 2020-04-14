@@ -9,25 +9,25 @@ import ApiRequest from '../ApiRequest/ApiRequest';
  * @example ../../docs/User/User.md
  */
 function User(props) {
-    let url = 'https://api.spotify.com/v1';
-    let options = {};
-    if (props.id) {
-        url += `/users/${props.id}`;
-    } else {
-        url += `/me`;
-    }
+  let url = 'https://api.spotify.com/v1';
+  let options = {};
+  if (props.id) {
+    url += `/users/${props.id}`;
+  } else {
+    url += `/me`;
+  }
 
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 
 User.propTypes = {
-    /** The Spotify ID of the user (if not specified then current user) */
-    id: PropTypes.string,
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** The Spotify ID of the user (if not specified then current user) */
+  id: PropTypes.string,
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 export default User;

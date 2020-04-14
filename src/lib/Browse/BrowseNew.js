@@ -10,25 +10,25 @@ const BASE_URL = 'https://api.spotify.com/v1/browse/new-releases';
  * @example ../../docs/Browse/BrowseNew.md
  */
 function BrowseNew(props) {
-    let url = BASE_URL;
-    let options = { ...props.options };
+  let url = BASE_URL;
+  let options = { ...props.options };
 
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 
 BrowseNew.propTypes = {
-    /** Options object */
-    options: PropTypes.shape({
-        country: PropTypes.string,
-        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    }),
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** Options object */
+  options: PropTypes.shape({
+    country: PropTypes.string,
+    limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 export default BrowseNew;

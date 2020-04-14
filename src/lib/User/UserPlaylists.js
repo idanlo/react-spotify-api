@@ -10,35 +10,35 @@ const BASE_URL = 'https://api.spotify.com/v1';
  * @example ../../docs/User/UserPlaylists.md
  */
 function UserPlaylists(props) {
-    let url = BASE_URL;
-    let options = { ...props.options };
-    if (props.id) {
-        url += `/users/${props.id}/playlists`;
-    } else {
-        url += `/me/playlists`;
-    }
+  let url = BASE_URL;
+  let options = { ...props.options };
+  if (props.id) {
+    url += `/users/${props.id}/playlists`;
+  } else {
+    url += `/me/playlists`;
+  }
 
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 
 UserPlaylists.propTypes = {
-    /** The id of the user */
-    id: PropTypes.string,
-    /** Options object */
-    options: PropTypes.shape({
-        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    }),
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** The id of the user */
+  id: PropTypes.string,
+  /** Options object */
+  options: PropTypes.shape({
+    limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 UserPlaylists.defaultProps = {
-    options: {}
+  options: {},
 };
 
 export default UserPlaylists;

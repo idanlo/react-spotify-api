@@ -10,37 +10,37 @@ import ApiRequest from '../ApiRequest/ApiRequest';
  * @example ../../docs/Track/Track.md
  */
 function Track(props) {
-    let url = 'https://api.spotify.com/v1/tracks';
-    let options = { ...props.options };
-    if (Array.isArray(props.id)) {
-        options.ids = props.id.join(',');
-    } else {
-        url += `/${props.id}`;
-    }
+  let url = 'https://api.spotify.com/v1/tracks';
+  let options = { ...props.options };
+  if (Array.isArray(props.id)) {
+    options.ids = props.id.join(',');
+  } else {
+    url += `/${props.id}`;
+  }
 
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 
 Track.propTypes = {
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired,
-    /** The id/s of the track/s */
-    id: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string.isRequired)
-    ]).isRequired,
-    /** Options object */
-    options: PropTypes.shape({
-        market: PropTypes.string
-    })
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
+  /** The id/s of the track/s */
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string.isRequired),
+  ]).isRequired,
+  /** Options object */
+  options: PropTypes.shape({
+    market: PropTypes.string,
+  }),
 };
 
 Track.defaultProps = {
-    options: {}
+  options: {},
 };
 
 export default Track;

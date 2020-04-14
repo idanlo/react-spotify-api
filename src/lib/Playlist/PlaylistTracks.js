@@ -8,32 +8,32 @@ import ApiRequest from '../ApiRequest/ApiRequest';
  * @example ../../docs/Playlist/PlaylistTracks.md
  */
 function PlaylistTracks(props) {
-    let url = `https://api.spotify.com/v1/playlists/${props.id}/tracks`;
-    let options = { ...props.options };
+  let url = `https://api.spotify.com/v1/playlists/${props.id}/tracks`;
+  let options = { ...props.options };
 
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 
 PlaylistTracks.propTypes = {
-    /** The Spotify ID for the playlist. */
-    id: PropTypes.string.isRequired,
-    /** Options object */
-    options: PropTypes.shape({
-        fields: PropTypes.string,
-        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        market: PropTypes.string
-    }),
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** The Spotify ID for the playlist. */
+  id: PropTypes.string.isRequired,
+  /** Options object */
+  options: PropTypes.shape({
+    fields: PropTypes.string,
+    limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    market: PropTypes.string,
+  }),
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 PlaylistTracks.defaultProps = {
-    options: {}
+  options: {},
 };
 
 export default PlaylistTracks;

@@ -12,30 +12,30 @@ const BASE_URL = 'https://api.spotify.com/v1/artists';
  * @example ../../docs/Artist/ArtistAlbums.md
  */
 function ArtistAlbums(props) {
-    let url = BASE_URL + `/${props.id}/albums`;
-    let options = { ...props.options };
-    return (
-        <ApiRequest url={url} options={options}>
-            {(data, loading, error) => props.children(data, loading, error)}
-        </ApiRequest>
-    );
+  let url = BASE_URL + `/${props.id}/albums`;
+  let options = { ...props.options };
+  return (
+    <ApiRequest url={url} options={options}>
+      {props.children}
+    </ApiRequest>
+  );
 }
 ArtistAlbums.propTypes = {
-    /** Options object */
-    options: PropTypes.shape({
-        include_groups: PropTypes.string,
-        market: PropTypes.string,
-        limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    }),
-    /** Id of the artist */
-    id: PropTypes.string.isRequired,
-    /** Process spotify data with render props using props.children as a function */
-    children: PropTypes.func.isRequired
+  /** Options object */
+  options: PropTypes.shape({
+    include_groups: PropTypes.string,
+    market: PropTypes.string,
+    limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
+  /** Id of the artist */
+  id: PropTypes.string.isRequired,
+  /** Process spotify data with render props using props.children as a function */
+  children: PropTypes.func.isRequired,
 };
 
 ArtistAlbums.defaultProps = {
-    options: {}
+  options: {},
 };
 
 export default ArtistAlbums;
