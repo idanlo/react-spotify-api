@@ -5,9 +5,9 @@ import { UserArtists } from 'react-spotify-api'
 
 ```jsx static
 <UserArtists>
-    {(artists, loading, error) =>
+    {({ data, loading, error, loadMoreData }) =>
         artists ? (
-            artists.artists.items.map(artist => (
+            data.items.map(artist => (
                 <h1 key={artist.id}>{artist.name}</h1>
             ))
         ) : null
