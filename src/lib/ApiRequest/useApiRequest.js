@@ -3,7 +3,7 @@ import React from 'react';
 import { serialize } from '../utils';
 import { SpotifyApiContext, SpotifyApiAxiosContext } from '../';
 
-function useApiRequest(url, options = {}) {
+function useApiRequest(url, options = {}, processor = null) {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
   const [data, setData] = React.useState(null);
@@ -23,7 +23,7 @@ function useApiRequest(url, options = {}) {
         });
         resData = res.data;
       } else {
-        const res = await fetch(url + serialize(options), {
+        res = await fetch(url + serialize(options), {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -31,6 +31,7 @@ function useApiRequest(url, options = {}) {
         });
         resData = await res.json();
       }
+      if (processor) resData = processor(resData)
       setLoading(false);
 
       if (resData.error) {
@@ -67,7 +68,7 @@ function useApiRequest(url, options = {}) {
           });
           resData = res.data;
         } else {
-          const res = await fetch(data.next + serialize(wantedOpts, true), {
+          res = await fetch(data.next + serialize(wantedOpts, true), {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`,
@@ -75,6 +76,7 @@ function useApiRequest(url, options = {}) {
           });
           resData = await res.json();
         }
+        if (processor) resData = processor(resData)
         setLoading(false);
 
         if (resData.error) {

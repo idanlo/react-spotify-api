@@ -20,8 +20,8 @@
     "access": "public"
   },
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "src/lib/index.js",
+  "module": "src/lib/index.js",
   "files": [
     "dist",
     "README.md"
