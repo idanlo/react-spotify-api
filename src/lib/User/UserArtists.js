@@ -14,7 +14,7 @@ function UserArtists(props) {
   let options = { ...props.options, type: 'artist' };
 
   return (
-    <ApiRequest url={url} options={options}>
+    <ApiRequest url={url} options={options} processor={ (data) => (data && data.artists)?data.artists:data}>
       {props.children}
     </ApiRequest>
   );
