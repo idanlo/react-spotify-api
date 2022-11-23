@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ApiRequest from '../ApiRequest/ApiRequest';
 
-const BASE_URL = 'https://api.spotify.com/v1/me/tracks';
+const BASE_URL = 'https://api.spotify.com/v1/me/top/tracks';
 
 /**
  * Get a list of the songs saved in the current Spotify user’s ‘Your Music’ library.<br/>
